@@ -10,28 +10,36 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div class="yield-container">
+    <div class="container">
+      <div class="posting-wapper">
+        
+        
+        <div class="field">
+          <% form.label :user_id %>
+          <% form.text_field :user_id %>
+        </div>
+        
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name %>
+        </div>
+        
+        <div class="field">
+          <%= form.label :content %>
+          <%= form.text_area :content %>
+        </div>
+        
+        <div class="field">
+          <% form.label :date %>
+          <% form.datetime_select :date %>
+        </div>
+        
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  
 <% end %>
