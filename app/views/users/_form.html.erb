@@ -11,17 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+<div class="yield-container">
+  <div class="container">
+    <div class="setting-wrapper">
+      <h1>設定</h1>
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name, :placeholder => "名前" %>
+      </div>
+      <div class="field">
+        <%= form.label :email %>
+        <%= form.text_field :email, :placeholder => "メールアドレス" %>
+      </div>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+</div>
 <% end %>

@@ -1,2 +1,30 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div>これをeditフォームでする</div>
+<div class="yield-container">
+  <div class="container">
+    <div class="setting-wrapper">
+      <h1>設定</h1>
+      <div class="form-contents">
+        <form action="" accept-charset="UTF-8" class="profiles form">
+          <input type="hidden">
+          <div class="field">
+            <label for="profiel-name">名前</label>
+            <input type="text" name="user-name" value="<%= current_user.name %>" placeholder="〇〇文字以内">
+          </div>
+          <div class="field">
+            <label for="profiel-email">メールアドレス</label>
+            <input type="text" name="user-email" value="<%= current_user.email %>" placeholder="メールアドレス">
+          </div>
+          <div class="field">
+            <label for="profiel-email">メールアドレス</label>
+            <textarea name="user-profile" id="" cols="30" rows="10" placeholder="プロフィール">プロフィール(未実装)</textarea>
+          </div>
+          <div class="field">
+            <button>更新する</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div><%= link_to '登録情報変更', edit_user_path(current_user), class:"btn btn-outline-info" %></div>
+
