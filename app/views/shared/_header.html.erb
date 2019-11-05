@@ -1,0 +1,22 @@
+<header>
+  <div>
+    <div class="container">
+      <div class="left">
+        <a class="logo" href="/">
+          <span class="title">Codr</span>
+          <span> - share your code</a>
+        </a>
+      </div>
+    </div>
+    <div class="right">
+      <% if user_signed_in? %>
+        <a href="/users/#{current_user.id}">アカウント情報</a>
+        <a href="/logout">ログアウト</a>
+      <% else %>
+        <a href="/login">ログイン</a>
+      <% end %>
+    </div>
+  </div>
+</header>
+<br>
+

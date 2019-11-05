@@ -82,3 +82,32 @@ div {
 label {
   display: block;
 }
+
+header {
+  background-color: rgb(170, 170, 170);
+  height: 20px;
+  margin-bottom: auto;
+  padding:20px;
+  .title {
+    font-size:30px;
+  }
+  .left span {
+    float: left;
+    }
+  .right a {
+    float: right;
+  }
+}
+
+footer {
+  background-color: rgb(170, 170, 170);
+  height: 20px;
+  margin-bottom: auto;
+  padding:20px;
+  text-align: center;
+}
+
+span {
+  display:inline-block;
+  margin: 10px auto;
+}
