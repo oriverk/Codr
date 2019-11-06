@@ -1,7 +1,7 @@
 body {
   background-color: #fff;
   color: #333;
-  margin: 33px;
+  margin: 0;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -83,31 +83,57 @@ label {
   display: block;
 }
 
-header {
-  background-color: rgb(170, 170, 170);
-  height: 20px;
-  margin-bottom: auto;
-  padding:20px;
-  .title {
-    font-size:30px;
-  }
-  .left span {
-    float: left;
+/* custom from here */
+
+body{
+  .body-container{
+    width:50%;
+    margin: auto;
+    background-color:rgb(245, 245, 245);
+    header{
+      margin-top:5px;
+      font-size:20px;
+      height:50px;
+      background-color:rgb(218, 218, 218);
+      .left span{
+        float:left;
+        border:solid 1px yellow;
+        
+      }
+      .right{
+        float:right;
+        a{
+          float:left;
+          border:solid 1px yellow;
+        }
+      }
     }
-  .right a {
-    float: right;
+    footer{
+      height:50px;
+      background-color:rgb(218,218,218);
+      a{
+        border:solid 1px yellow;
+      }
+    }
   }
 }
 
-footer {
-  background-color: rgb(170, 170, 170);
-  height: 20px;
-  margin-bottom: auto;
-  padding:20px;
-  text-align: center;
+.posting-container{
+  border:solid 1px black;
 }
-
-span {
-  display:inline-block;
-  margin: 10px auto;
+.posts-container{
+  border:solid 1px black;
+  margin:10px auto;
+  padding: 5px;
+  .post-container{
+    border:solid 1px red;
+    padding-bottom:5px;
+    margin-bottom:5px;
+    .content{
+      height:50px;
+      border:solid 1px blue;
+      margin:10px;
+      padding:10px;
+    }
+  }
 }

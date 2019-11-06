@@ -10,10 +10,12 @@
   </head>
 
    <body>
-    <%= render :partial => 'shared/header' %>
-    <div class="yield-container">
-      <%= yield %>
-    </div>  
-    <%= render :partial => 'shared/footer' %>
-  </body>
+    <div class="body-container">
+      <%= render :partial => 'shared/header' %>
+      <div class="yield-container">
+        <%= yield %>
+      </div>  
+      <%= render :partial => 'shared/footer' %>
+    </div>
+    </body>
 </html>

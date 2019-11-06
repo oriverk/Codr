@@ -1,4 +1,3 @@
-<div class="main-container">
   <p id="notice"><%= notice %></p>
   <div class="posting-container">
     <% if user_signed_in? %>
@@ -7,18 +6,15 @@
       <%= link_to 'New Post', 'login' %>
     <% end%>
   </div>
+
   <div class="posts-container">
     <% @posts.each do |post| %>
       <div class="post-container">
-        <div class="post-user-info">
-          <div class="post-user-name">
-            <%= post.user_id %>
-          </div>
-          <p class="post-date"><%= post.date %></p>
+        <div class="user-info">
+          <div class="user-name"><%= post.user_id %></div>
         </div>
-        <div class="post-content">
-          <p><%= post.content %></p>
-        </div>
+        <div class="post-info"><p class="date"><%= post.date %></p></div>
+        <div class="content"><p><%= post.content %></p></div>
         <div class="post-action">
           <% if user_signed_in? %>
             <%= link_to 'Show', post %>
@@ -26,7 +22,6 @@
             <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %> 
         </div>
-      <% end%>
-  </div>
-  </div>
-</div>
+      </div>
+    <% end%>
+   </div>
