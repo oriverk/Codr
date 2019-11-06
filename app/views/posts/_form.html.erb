@@ -14,11 +14,15 @@
     <div class="container">
       <div class="posting-wapper">
         
-        
+       <!--
         <div class="field">
-          <% form.label :user_id %>
-          <% form.text_field :user_id %>
+          <%= form.label :user_id %>
+          <%= form.text_field :user_id %>
         </div>
+      -->
+
+        <%= form.hidden_field :user_id, :value => current_user.id %>
+        <%= form.hidden_field :date, :value => Time.now %>    
         
         <div class="field">
           <%= form.label :name %>
@@ -30,11 +34,9 @@
           <%= form.text_area :content %>
         </div>
         
-        <div class="field">
-          <% form.label :date %>
-          <% form.datetime_select :date %>
-        </div>
-        
+       
+
+     
         <div class="actions">
           <%= form.submit %>
         </div>
