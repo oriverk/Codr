@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: %i[edit update destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @userPosts = Post.where(user:current_user.id)
-    @userPostsCount = @userPosts.to_a.count
+    @userPosts = Post.where(user: current_user.id)
+    @userPostsCount = @userPosts.to_a.size
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @posts = Post.where(user:current_user.id)
+    @posts = Post.where(user: current_user.id)
   end
 
   # GET /users/new
@@ -21,8 +23,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  def edit; end
 
   # user /users
   # user /users.json
@@ -65,13 +66,14 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:user_id, :name, :content, :date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:user_id, :name, :content, :date)
+  end
 end

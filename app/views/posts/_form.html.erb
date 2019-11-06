@@ -10,17 +10,8 @@
       </ul>
     </div>
   <% end %>
-  <div class="yield-container">
     <div class="container">
       <div class="posting-wapper">
-        
-       <!--
-        <div class="field">
-          <%= form.label :user_id %>
-          <%= form.text_field :user_id %>
-        </div>
-      -->
-
         <%= form.hidden_field :user_id, :value => current_user.id %>
         <%= form.hidden_field :date, :value => Time.now %>    
         
@@ -31,17 +22,12 @@
         
         <div class="field">
           <%= form.label :content %>
-          <%= form.text_area :content %>
+          <%= form.text_area :content, value: "```\n\n```", :placeholder => "Share your Code." %>
         </div>
         
-       
-
-     
         <div class="actions">
           <%= form.submit %>
         </div>
       </div>
-    </div>
-  </div>
-  
+    </div> 
 <% end %>
