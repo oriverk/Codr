@@ -7,7 +7,7 @@
       <p class="post-date"><%= @post.date %></p>
     </div>
     <div class="post-content">
-      <p><%= @post.content %></p>
+      <pre><code><%= @post.content %></code></pre>
     </div>
     <div class="post-action">
       <%= link_to 'Back', posts_path %>

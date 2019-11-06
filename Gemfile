@@ -75,8 +75,6 @@ gem 'omniauth-twitter'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
-# markdown :後から実装
-# gem 'redcarpet'
 
 # syntax-highlight
 # gem 'rouge'　:後から実装
