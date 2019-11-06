@@ -10,7 +10,7 @@
     </div>
     <div class="right">
       <% if user_signed_in? %>
-        <a href="/users/#{current_user.id}">アカウント情報</a>
+        <a href="/users/<%=current_user.id%>/edit">アカウント情報</a>
         <a href="/logout">ログアウト</a>
       <% else %>
         <a href="/login">ログイン</a>

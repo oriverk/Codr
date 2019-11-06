@@ -20,8 +20,13 @@
         <%= form.text_field :name, :placeholder => "名前" %>
       </div>
       <div class="field">
-        <%= form.label :email %>
-        <%= form.text_field :email, :placeholder => "メールアドレス" %>
+        <%= form.label :profile %>
+        <%= form.text_area :profile, :placeholder => "プロフィール" %>
+      </div>
+      
+      <div class="field">
+        <p>メールアドレス:<%= current_user.email %></p>
+        <%= link_to "メールアドレスとパスワードの変更はこちら", edit_user_registration_path %>
       </div>
       <div class="actions">
         <%= form.submit %>
