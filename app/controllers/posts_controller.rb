@@ -20,13 +20,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    logger.debug '1-------------'
-    logger.debug "params is #{params}"
-    logger.debug '2-------------'
     @post = Post.new(user_id: current_user.id, date: Time.now)
-    logger.debug '3-------------'
-    logger.debug "params is #{params}"
-    logger.debug '4-------------'
   end
 
   # GET /posts/1/edit
@@ -40,8 +34,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
+        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
+        format.json { render :index, status: :created, location: @posts }
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -54,8 +48,8 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
+        format.html { redirect_to posts_path, notice: 'Post was successfully updated.' }
+        format.json { render :show, status: :ok, location: @posts }
       else
         format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }
