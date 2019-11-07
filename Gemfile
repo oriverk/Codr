@@ -76,5 +76,5 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 
 
-# syntax-highlight
-# gem 'rouge'　:後から実装
+# markdown
+gem 'redcarpet'

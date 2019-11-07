@@ -125,16 +125,16 @@ body{
   border:solid 1px black;
   margin:10px auto;
   padding: 5px;
-  .post-container{
+}
+
+.post-container{
     border:solid 1px red;
     padding-bottom:5px;
     margin-bottom:5px;
     .content{
-      height:50px;
       border:solid 1px blue;
       margin:10px;
       padding:10px;
       background-color:white;
     }
   }
-}

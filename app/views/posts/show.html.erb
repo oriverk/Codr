@@ -6,8 +6,8 @@
       </div>
       <p class="post-date"><%= @post.date %></p>
     </div>
-    <div class="post-content">
-      <pre><code><%= @post.content %></code></pre>
+    <div class="content">コード：
+      <div><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(@post.content).html_safe %></div>
     </div>
     <div class="post-action">
       <%= link_to 'Back', posts_path %>
