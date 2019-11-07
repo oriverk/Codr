@@ -17,12 +17,12 @@
         
         <div class="field">
           <%= form.label :name %>
-          <%= form.text_field :name %>
+          <%= form.text_field :name , value: "title"%>
         </div>
         
         <div class="field">
           <%= form.label :content %>
-          <%= form.text_area :content, value: "```\n\n```", :placeholder => "Share your Code." %>
+          <%= form.text_area :content, value: "```\n\n```", :placeholder => "write as markdown",size:"40x20" %>
         </div>
         
         <div class="actions">

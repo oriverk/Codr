@@ -6,7 +6,7 @@
       </div>
       <p class="post-date"><%= @post.date %></p>
     </div>
-    <div class="content">コード：
+    <div class="content">
       <div><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(@post.content).html_safe %></div>
     </div>
     <div class="post-action">
