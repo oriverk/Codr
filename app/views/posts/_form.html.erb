@@ -22,8 +22,12 @@
         
         <div class="field">
           <%= form.label :content %>
-          <%= form.text_area :content, value: "```\n\n```", :placeholder => "write as markdown",size:"40x20" %>
-        </div>
+          <% if @post.content.nil? %>
+            <%= form.text_area :content,placeholder: "u can write and code with markdown-system!",size:"40x20" %>
+          <% else %>
+            <%= form.text_area :content,  placeholder: "write as markdown",size:"40x20" %>
+          <% end %>         
+          </div>
         
         <div class="actions">
           <%= form.submit %>

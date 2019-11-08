@@ -1,13 +1,7 @@
   <p id="notice"><%= notice %></p>
   <div class="post-container">
-    <div class="post-user-info">
-      <div class="post-user-name">
-        <%= @post.user_id %>
-      </div>
-      <p class="post-date"><%= @post.date %></p>
-    </div>
-    <div class="content">
-      <div><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(@post.content).html_safe %></div>
+    <div id="capture" class="content">
+        <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(@post.content).html_safe %>
     </div>
     <div class="post-action">
       <%= link_to 'Back', posts_path %>
@@ -16,4 +10,15 @@
         <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
     </div>
-  </div>
+  
+
+  <p>-------------------------</p>
+    <img src="" alt="" id="canvas-image">
+
+    <script type="text/javascript">
+      html2canvas(document.querySelector("#capture")).then(canvas => {
+        var imageData = canvas.toDataURL();
+        document.getElementById('canvas-image').setAttribute("src",canvas.toDataURL('image/jpeg'));
+      });
+    </script>
+    </div>

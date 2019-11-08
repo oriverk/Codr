@@ -14,12 +14,13 @@
           <div class="user-name"><%= post.user_id %></div>
         </div>
         <div class="post-info"><p class="date"><%= post.date %></p></div>
-        <div class="content">コード：
+        <div class="content">
           <div><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(post.content).html_safe %></div>
         </div>
         <div class="post-action">
           <% if user_signed_in? %>
             <%= link_to 'Show', post %>
+            
             <%= link_to 'Edit', edit_post_path(post) %>
             <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %> 
