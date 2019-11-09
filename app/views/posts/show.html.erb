@@ -12,7 +12,8 @@
     </div>
   
 
-  <p>-------------------------</p>
+  <p>----------html2canvas2image---------------</p>
+    
     <img src="" alt="" id="canvas-image">
 
     <script type="text/javascript">
@@ -22,3 +23,65 @@
       });
     </script>
     </div>
+
+
+    <p>------------getImageSrc--------------------------------</p>
+
+    
+    <script>
+      function getImageSrc(){
+        var element = document.getElementById('canvas-image');
+        element.getAttribute('src');
+        alert(element.src);
+        }
+    </script>
+
+    <button onclick="getImageSrc()">getImageSrc</button>
+
+    <p>---------------------------------</p>
+
+    <%= form_with(model: @post, local: true) do |form| %>
+  
+    <div class="post-container">
+      <div class="posting-wapper">
+        <%= form.hidden_field :user_id, :value => current_user.id %>
+       <%= form.hidden_field :image, :value => 'value' %>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      </div>
+    </div> 
+    <% end %>
+
+<p>-----------setImageSrcToValue-------------------------------<p>
+
+    <script>
+      function setImageSrcToValue(){
+        var element = document.getElementById('canvas-image');
+        var img_value = element.getAttribute('src')
+        
+        var img = document.getElementById('post_image');
+        img.setAttribute("value",img_value);
+        alert()
+      }
+    </script>
+
+   
+
+<p>-------------koko made ---------------------</p>
+
+<script>
+  document.addEventListener('load', function() {
+    var element = document.getElementById('canvas-image');
+    var img_value = element.getAttribute('src')
+    var img = document.getElementById('post_image');
+    img.setAttribute("value",img_value);
+    alert(img_value)
+  });
+</script>
+
+
+<div>
+<p>gazou dashi</p>
+<img src=<%= "#{@post.image}"%>>
+</div>

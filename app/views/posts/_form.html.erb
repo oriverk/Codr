@@ -13,11 +13,16 @@
     <div class="post-container">
       <div class="posting-wapper">
         <%= form.hidden_field :user_id, :value => current_user.id %>
-        <%= form.hidden_field :date, :value => Time.now %>    
+        <%= form.hidden_field :date, :value => Time.now %>
         
         <div class="field">
           <%= form.label :name %>
           <%= form.text_field :name , value: "title"%>
+        </div>
+
+        <div class="field">
+          <%= form.label :image %>
+          <%= form.text_field :image, value: "base64+base64+base64" %>
         </div>
         
         <div class="field">

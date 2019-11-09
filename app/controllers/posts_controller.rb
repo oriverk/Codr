@@ -16,7 +16,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.json
-  def show; end
+  def show
+  logger.debug '----------show-------------' 
+  end
 
   # GET /posts/new
   def new
@@ -24,7 +26,9 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit; end
+  def edit
+  logger.debug '----------edit-----------' 
+  end
 
   # POST /posts
   # POST /posts.json
@@ -46,15 +50,20 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    logger.debug '--------before respond------------'
     respond_to do |format|
+      logger.debug '----------inner respend------------'
       if @post.update(post_params)
+        logger.debug '----------after if before else------------'
         format.html { redirect_to post_path, notice: 'Post was successfully updated.' }
         format.json { render :index, status: :ok, location: post }
+        logger.debug '---------just before else'
       else
         format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+    logger.debug '------------just before end of update method------------'
   end
 
   # DELETE /posts/1
@@ -76,6 +85,6 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:user_id, :name, :content, :date)
+    params.require(:post).permit(:user_id, :name, :content, :date, :image)
   end
 end
