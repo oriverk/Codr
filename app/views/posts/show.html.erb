@@ -1,4 +1,4 @@
-    <% set_meta_tags og:{image:@post.image} %>
+  <% set_meta_tags og:{image:@post.image} %>
 
   <p id="notice"><%= notice %></p>
   <div class="post-container">
@@ -13,11 +13,7 @@
       <% end %>
     </div>
   
-
-  <p>----------img from html2canvas2image---------------</p>
-    
-    <img src="" id="canvas-image">
-<p> ----------------form----------------</p>
+    <% if user_signed_in? %>
     <%= form_with(model: @post, local: true) do |form| %>
     <div class="post-container">
       <div class="posting-wapper">
@@ -28,48 +24,18 @@
         <%= form.submit%>
       </div>
     </div> 
-    <% end %>  
-<p>------------script html2canvas2image-------------</p>
+    <% end %> 
+    
+
     <script type="text/javascript">
       html2canvas(document.querySelector("#capture"),{scale:1}).then(canvas => {
         var imageData = canvas.toDataURL();
-        document.getElementById('canvas-image').setAttribute("src",canvas.toDataURL('image/jpeg'));
+        //with html2canvas, convert html to Image and add ImageData to value
         document.getElementById('post_image').setAttribute('value',imageData);
       });
     </script>
     </div>
 
-
-    <p>------------getImageSrc--------------------------------</p>
-
-    
-    <script>
-      function getImageSrc(){
-        var element = document.getElementById('canvas-image').getAttribute('src');
-        alert(element);
-        }
-    </script>
-
-    <button onclick="getImageSrc()">getImageSrc</button>
-
-    <p>---------------------------------</p>
-
- 
-  <script>
-    function getSetValue(){
-      var elm = document.getElementById('canvas-image').getAttribute('src');　　//html2canvasで生成したid=canvas-imageを持つimgタグのsrc情報を取得し、elmに代入
-      alert(elm);
-
-      var ipt = document.getElementById('post_image')
-      ipt.setAttribute('value',elm); //id=post_imageを持つinputタグの情報を取得し、value属性に値としてelmを代入
-      var elm2 =document.getElementById('post_image').getAttribute('value');
-      alert(elm2);  //valueにelmが入ったか確認でアラート2回目
-      alert("ちゃんと動いたよ")
-    }
-  </script>
-    <button onclick="getSetValue()">getSetValue</button>
-
-<p>--------------------test--------------</p>
-
+    <% end %>
 </body>
  
