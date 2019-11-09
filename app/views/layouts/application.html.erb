@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Codr</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <!-- OGP -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@gdCodr">
-    <meta name="twitter:title" content="code">
-    <meta name="twitter:description" content="Share code on twiter">
-    <meta name="twitter:image" content="https://alien.laineus.com/img/title.png">
+    <%= display_meta_tags(default_meta_tags) %>
   </head>
 
    <body>

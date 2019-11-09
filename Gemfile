@@ -78,3 +78,6 @@ gem 'devise-i18n-views'
 
 # markdown
 gem 'redcarpet'
+
+# meta-tag
+gem 'meta-tags'
