@@ -21,10 +21,11 @@
         <%= form.hidden_field :image %>
       </div>  
       <div class="actions">
-        <%= form.submit "シェアする", onclick:'tweet()'%>
+        <%= form.submit "シェアする" ,href:"https://twitter.com/intent/tweet?&hashtags=codr8&url=https://codr8.heroku.app/posts/#{@post.id}", onclick:"tweet()" %>
       </div>
-      <div class="twitter">
-　
+     
+
+</a>
 </div>
     </div> 
     <% end %> 
@@ -39,9 +40,16 @@
     </script>
     <script>
       function tweet(){
-        window.open();
-        alert('aaa');
+        var WIDTH = 400;
+        var HEIGHT = 300;
+        var x = (window.innerWidth / 2) - (WIDTH / 2);
+        var y = (window.innerHeight / 2) - (HEIGHT / 2);
       }
+    </script>
+    <script>
+      function tweet(){
+       window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;
+      };
     </script>
     </div>
 
