@@ -21,8 +21,11 @@
         <%= form.hidden_field :image %>
       </div>  
       <div class="actions">
-        <%= form.submit%>
+        <%= form.submit "シェアする", onclick:'tweet()'%>
       </div>
+      <div class="twitter">
+　
+</div>
     </div> 
     <% end %> 
     
@@ -33,6 +36,11 @@
         //with html2canvas, convert html to Image and add ImageData to value
         document.getElementById('post_image').setAttribute('value',imageData);
       });
+    </script>
+    <script>
+      function tweet(){
+        window.open();
+      }
     </script>
     </div>
 
