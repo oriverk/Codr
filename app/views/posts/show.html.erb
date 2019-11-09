@@ -14,14 +14,27 @@
     </div>
   
 
-  <p>----------html2canvas2image---------------</p>
+  <p>----------img from html2canvas2image---------------</p>
     
-    <img src="" alt="" id="canvas-image">
-
+    <img src="" id="canvas-image">
+<p> ----------------form----------------</p>
+    <%= form_with(model: @post, local: true) do |form| %>
+    <div class="post-container">
+      <div class="posting-wapper">
+        <%= form.hidden_field :user_id, :value => current_user.id %>
+        <%= form.hidden_field :image %>
+      </div>  
+      <div class="actions">
+        <%= form.submit%>
+      </div>
+    </div> 
+    <% end %>  
+<p>------------script html2canvas2image-------------</p>
     <script type="text/javascript">
-      html2canvas(document.querySelector("#capture")).then(canvas => {
+      html2canvas(document.querySelector("#capture"),{scale:1}).then(canvas => {
         var imageData = canvas.toDataURL();
         document.getElementById('canvas-image').setAttribute("src",canvas.toDataURL('image/jpeg'));
+        document.getElementById('post_image').setAttribute('value',imageData);
       });
     </script>
     </div>
@@ -32,9 +45,8 @@
     
     <script>
       function getImageSrc(){
-        var element = document.getElementById('canvas-image');
-        element.getAttribute('src');
-        alert(element.src);
+        var element = document.getElementById('canvas-image').getAttribute('src');
+        alert(element);
         }
     </script>
 
@@ -42,48 +54,22 @@
 
     <p>---------------------------------</p>
 
-    <%= form_with(model: @post, local: true) do |form| %>
-  
-    <div class="post-container">
-      <div class="posting-wapper">
-        <%= form.hidden_field :user_id, :value => current_user.id %>
-       <%= form.hidden_field :image, :value => 'value' %>
-        <div class="actions">
-          <%= form.submit %>
-        </div>
-      </div>
-    </div> 
-    <% end %>
+ 
+  <script>
+    function getSetValue(){
+      var elm = document.getElementById('canvas-image').getAttribute('src');　　//html2canvasで生成したid=canvas-imageを持つimgタグのsrc情報を取得し、elmに代入
+      alert(elm);
 
-<p>-----------setImageSrcToValue-------------------------------<p>
+      var ipt = document.getElementById('post_image')
+      ipt.setAttribute('value',elm); //id=post_imageを持つinputタグの情報を取得し、value属性に値としてelmを代入
+      var elm2 =document.getElementById('post_image').getAttribute('value');
+      alert(elm2);  //valueにelmが入ったか確認でアラート2回目
+      alert("ちゃんと動いたよ")
+    }
+  </script>
+    <button onclick="getSetValue()">getSetValue</button>
 
-    <script>
-      function setImageSrcToValue(){
-        var element = document.getElementById('canvas-image');
-        var img_value = element.getAttribute('src')
-        
-        var img = document.getElementById('post_image');
-        img.setAttribute("value",img_value);
-        alert()
-      }
-    </script>
+<p>--------------------test--------------</p>
 
-   
-
-<p>-------------koko made ---------------------</p>
-
-<script>
-  document.addEventListener('load', function() {
-    var element = document.getElementById('canvas-image');
-    var img_value = element.getAttribute('src')
-    var img = document.getElementById('post_image');
-    img.setAttribute("value",img_value);
-    alert(img_value)
-  });
-</script>
-
-
-<div>
-<p>gazou dashi</p>
-<img src=<%= "#{@post.image}"%>>
-</div>
+</body>
+ 
