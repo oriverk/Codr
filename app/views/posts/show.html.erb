@@ -21,11 +21,11 @@
         <%= form.hidden_field :image %>
       </div>  
       <div class="actions">
-        <%= form.submit "シェアする" ,href:"https://twitter.com/intent/tweet?&hashtags=codr8&url=https://codr8.heroku.app/posts/#{@post.id}", onclick:"tweet()" %>
+        <%= form.submit "tweet" ,href:"https://twitter.com/intent/tweet?&hashtags=Codr21&data-related=Codr21,not_you_die&url=https://codr8.herokuapp.com/posts/#{@post.id}", onclick:"tweet()" %>
       </div>
+      
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
      
-
-</a>
 </div>
     </div> 
     <% end %> 
@@ -33,7 +33,7 @@
 
     <script type="text/javascript">
       html2canvas(document.querySelector("#capture"),{scale:1}).then(canvas => {
-        var imageData = canvas.toDataURL();
+        var imageData = canvas.toDataURL('image/jpeg', 1.0);
         //with html2canvas, convert html to Image and add ImageData to value
         document.getElementById('post_image').setAttribute('value',imageData);
       });
