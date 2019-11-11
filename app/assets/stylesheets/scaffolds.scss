@@ -1,10 +1,27 @@
+$tab: 680px; // タブレット
+
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+
+// 例
+// .box {
+//   @include tab {
+//     background-color: blue;
+//   };
+// }
+
 body {
-  background-color: #fff;
   color: #333;
-  margin: 0;
+  margin: 0 auto;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  @include tab {
+    width: 100%;
+  };
 }
 
 p, ol, ul, td {
@@ -84,57 +101,77 @@ label {
 }
 
 /* custom from here */
+#tweet{
+  background-color:#00acee;
+  margin-left:0;  
+}
 
 body{
   .body-container{
-    width:50%;
+    width:680px;
     margin: auto;
     background-color:rgb(245, 245, 245);
-    header{
-      margin-top:5px;
-      font-size:20px;
-      height:50px;
-      background-color:rgb(218, 218, 218);
-      .left span{
-        float:left;
-        border:solid 1px yellow;
-        
-      }
-      .right{
-        float:right;
-        a{
-          float:left;
-          border:solid 1px yellow;
-        }
-      }
+      @include tab {
+        width: 100%;
+        margin: auto;
+      };
     }
-    footer{
-      height:50px;
-      background-color:rgb(218,218,218);
-      a{
-        border:solid 1px yellow;
-      }
+}   
+
+header{
+nav{ 
+  .nav {
+    float:right;
+    .nav-item.active{
+      float:left;
     }
   }
 }
+}
+
 
 .posting-container{
-  border:solid 1px black;
+  text-align:center;
+  height:40px;
+  width:100%;
+  margin:5px 0;
 }
 .posts-container{
-  border:solid 1px black;
-  margin:10px auto;
   padding: 5px;
 }
 
 .post-container{
-    border:solid 1px red;
-    padding-bottom:5px;
-    margin-bottom:5px;
-    .content{
-      border:solid 1px blue;
-      margin:10px;
-      padding:10px;
-      background-color:white;
-    }
+  border:solid 1px red;
+  padding:10px;
+  margin-bottom:5px;
+  .content{
+    margin:10px auto;
+    padding:10px;
+    background-color:white;
   }
+  .post-action{
+    display:flex;
+    form{
+      flex:auto;
+      input{
+        flex:auto;
+        
+        width:100%;
+      }
+    }
+    a{
+      flex:auto;
+      text-align:center;
+      margin-left:5px;
+    }
+  }  
+}
+
+footer nav a{
+  font:white;
+  font-weight: bold;
+}
+
+
+
+

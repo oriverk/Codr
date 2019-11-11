@@ -1,10 +1,12 @@
-  <p id="notice"><%= notice %></p>
+  <% if notice.present? %>
+  <p id="notice" class="alert alert-info" role="alert"><%= notice %></p>
+  <% end %>
   <div class="posting-container">
     <% if user_signed_in? %>
-       <%=link_to 'New Post', new_post_path(user_id: current_user.id) %>
-    <%else%>
-      <%= link_to 'New Post', 'login' %>
-    <% end%>
+    <%=link_to 'New Post', new_post_path(user_id: current_user.id) , type:"button", class:"btn btn-outline-dark btn-block"%>
+    <% else %>
+    <%=link_to 'New Post', 'login' , type:"button", class:"btn btn-outline-dark btn-block"%>
+    <% end %>
   </div>
 
   <div class="posts-container">
@@ -19,10 +21,11 @@
         </div>
         <div class="post-action">
           <% if user_signed_in? %>
-            <%= link_to 'Show', post %>
+            <%= link_to 'Tweet', "https://twitter.com", id:"tweet", target:"blank", type:"button", class:"btn" %>
+            <%= link_to 'Show', post, type:"button", class:"btn btn-outline-dark" %>
             
-            <%= link_to 'Edit', edit_post_path(post) %>
-            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Edit', edit_post_path(post) , type:"button", class:"btn btn-outline-dark"%>
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } , type:"button", class:"btn btn-outline-dark"%>
           <% end %> 
         </div>
       </div>
