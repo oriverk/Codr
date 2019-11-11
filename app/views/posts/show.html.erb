@@ -15,7 +15,7 @@
           <%= form.hidden_field :user_id, :value => current_user.id %>
           <%= form.hidden_field :image %>  
           <div class="actions">
-            <%= form.submit "tweet" ,onclick:'tweet()'%>
+            <%= form.submit "tweet" ,onclick:'tweet()',class:"twitter-hashtag-button"%>
           </div>  
         <% end %>
       <% end %>
@@ -29,12 +29,9 @@
         document.getElementById('post_image').setAttribute('value', base64);  
       });
     </script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script>
       function tweet(){
-        var WIDTH = 400;
-        var HEIGHT = 300;
-        var x = (window.innerWidth / 2) - (WIDTH / 2);
-        var y = (window.innerHeight / 2) - (HEIGHT / 2);
-        window.open('<a href="https://twitter.com/intent/tweet?button_hashtag=Codr0&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #Codr0</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>', 'tweet', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;
+        window.open("https://twitter.com/intent/tweet?url=htts://codr0.herokuapp.com/posts/23&button_hashtag=Codr0&ref_src=twsrc%5Etfw", 'tweet', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
       }
     </script>
