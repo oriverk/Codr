@@ -10,32 +10,23 @@
       <% if user_signed_in? %>
         <%= link_to 'Edit', edit_post_path(@post) %>
         <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+        <%= form_with(model: @post, local: true) do |form| %>
+          <%= form.hidden_field :user_id, :value => current_user.id %>
+          <%= form.hidden_field :image %>  
+          <div class="actions">
+            <%= form.submit "tweet" ,onclick:'tweet()'%>
+          </div>  
+        <% end %>
       <% end %>
     </div>
-  
-    <% if user_signed_in? %>
-    <%= form_with(model: @post, local: true) do |form| %>
-    <div class="post-container">
-      <div class="posting-wapper">
-        <%= form.hidden_field :user_id, :value => current_user.id %>
-        <%= form.hidden_field :image %>
-      </div>  
-      <div class="actions">
-        <%= form.submit "tweet" ,href:"https://twitter.com/intent/tweet?&hashtags=Codr21&data-related=Codr21,not_you_die&url=https://codr8.herokuapp.com/posts/#{@post.id}", onclick:"tweet()" %>
-      </div>
-      
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-     
-</div>
-    </div> 
-    <% end %> 
-    
-
+  </div>  
+# post-showのみのスクリプト
     <script type="text/javascript">
-      html2canvas(document.querySelector("#capture"),{scale:1}).then(canvas => {
-        var imageData = canvas.toDataURL('image/jpeg', 1.0);
-        //with html2canvas, convert html to Image and add ImageData to value
-        document.getElementById('post_image').setAttribute('value',imageData);
+      html2canvas(document.querySelector("#capture")).then(canvas => {
+        var base64 = canvas.toDataURL('image/jpeg', 1.0);
+        //document.getElementById('test_image_base64').setAttribute('src', base64);
+        document.getElementById('post_image').setAttribute('value', base64);  
       });
     </script>
     <script>
@@ -44,15 +35,6 @@
         var HEIGHT = 300;
         var x = (window.innerWidth / 2) - (WIDTH / 2);
         var y = (window.innerHeight / 2) - (HEIGHT / 2);
+        window.open('<a href="https://twitter.com/intent/tweet?button_hashtag=Codr0&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #Codr0</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>', 'tweet', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;
       }
     </script>
-    <script>
-      function tweet(){
-       window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1'); return false;
-      };
-    </script>
-    </div>
-
-    <% end %>
-</body>
- 

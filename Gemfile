@@ -70,6 +70,8 @@ gem 'rails-i18n'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem "omniauth-rails_csrf_protection"
+
 
 # japanize devise
 gem 'devise-i18n'
