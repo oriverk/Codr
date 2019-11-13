@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :set_user, only: %i[detail edit update destroy]
+  before_action :authenticate_user!, only: %i[new edit update destroy]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  def detail; end
   # GET /resource/sign_up
   # def new
   #   super
@@ -37,6 +40,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    user = User.find(params[:id])
+  end
 
   # protected
 

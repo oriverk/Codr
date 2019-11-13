@@ -11,25 +11,23 @@
     </div>
   <% end %>
 
-  <div class="post-container">
     <div class="setting-wrapper">
-      <h1>設定</h1>
+      <h1>Account Setting</h1>
       <div class="field">
         <%= form.label :name %>
-        <%= form.text_field :name, :placeholder => "名前" %>
+        <%= form.text_field :name, :placeholder => "name" %>
       </div>
       <div class="field">
         <%= form.label :profile %>
-        <%= form.text_area :profile, :placeholder => "プロフィール" %>
+        <%= form.text_area :profile, :placeholder => "" %>
       </div>
       
       <div class="field">
         <p>メールアドレス:<%= current_user.email %></p>
-        <%= link_to "メールアドレスとパスワードの変更はこちら", edit_user_registration_path %>
+        <%= link_to "Access here If u wanna change Email and Password", edit_user_registration_path %>
       </div>
       <div class="actions">
         <%= form.submit %>
       </div>
     </div>
-  </div>
 <% end %>

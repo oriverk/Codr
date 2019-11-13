@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    
     @userPosts = Post.where(user: current_user.id)
     @userPostsCount = @userPosts.to_a.size
   end
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = current_user
     @posts = Post.where(user: current_user.id)
   end
 
@@ -69,7 +71,7 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(id:current_user.id)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
