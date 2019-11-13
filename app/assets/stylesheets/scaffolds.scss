@@ -129,6 +129,13 @@ nav{
 }
 }
 
+.yield-container{
+  margin:20px;
+  .post-container{
+    padding: auto;
+
+  }
+}
 
 .posting-container{
   text-align:center;
@@ -167,9 +174,18 @@ nav{
   }  
 }
 
-footer nav a{
+.form-container{
+  margin: auto;
+}
+
+footer nav {
+  display: -webkit-flex;
+  display:flex;
+  a{
+  flex:auto;  
   font:white;
   font-weight: bold;
+  }
 }
 
 

@@ -6,18 +6,18 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
-  def index
+  # def index
     
-    @userPosts = Post.where(user: current_user.id)
-    @userPostsCount = @userPosts.to_a.size
-  end
+  #   @userPosts = Post.where(user: current_user.id)
+  #   @userPostsCount = @userPosts.to_a.size
+  # end
 
   # GET /users/1
   # GET /users/1.json
-  def show
-    @user = current_user
-    @posts = Post.where(user: current_user.id)
-  end
+  # def show
+  #   @user = current_user
+  #   @posts = Post.where(user: current_user.id)
+  # end
 
   # GET /users/new
   def new
@@ -25,7 +25,9 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit; end
+  def edit
+  @user = current_user
+  end
 
   # user /users
   # user /users.json
@@ -71,11 +73,11 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(id:current_user.id)
+    @user = User.find(current_user.id)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:user_id, :name, :content, :date)
+    params.require(:user).permit(:user_id, :name, :profile)
   end
 end

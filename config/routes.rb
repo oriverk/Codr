@@ -1,19 +1,31 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    registration: 'users/registration',
-    sessions: 'users/sessions'
-  }
+    
+  root 'posts#index'
+  resources :posts
+  get 'user' => 'users#edit', as: :edit_user
+  patch 'user' => 'users#update'
+  put 'user' => 'users#update'
+  delete 'user' => 'users#destroy'
+
+
+  # devise_for :users, controllers: {
+  #   sessions: 'devise/sessions'
+  # }
+ 
 
   devise_scope :user do
-    # get 'users/:id', to: 'users/registrations#detail'
-    get 'signup', to: 'users/registrations#new'
-    get 'login', to: 'users/sessions#new'
-    get 'logout', to: 'users/sessions#destroy'
+    get 'signup', to: 'devise/registrations#new'
+    get 'login', to: 'devise/sessions#new'
+    post 'login' => 'devise/sessions#create'
+    get 'logout', to: 'devise/sessions#destroy'
+
+    get 'register' => 'devise/registrations#edit'
+    patch 'register' => 'devise/registrations#update'
+    put 'register' => 'devise/registrations#update'
+    delete 'register' => 'devise/registrations#destroy'
   end
-  get '/', to: 'posts#index'
-  resources :posts
-  get 'users/:id', to: 'users#show'
+ 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

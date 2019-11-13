@@ -27,7 +27,8 @@
       </div>
         
       <div class="actions">
-        <%= form.submit %>
+        <%= link_to 'Back', posts_path , type:"button", class:"btn btn-outline-dark"%>
+        <%= form.submit "投稿する" , type:"button", class:"btn btn-outline-dark"%>
       </div>           
     <% end %>
   </div> 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # admin
-User.create(name: 'oriverk', email: 'se.sterroristalqaeda@gmail.com', password: 'riverfield', admin: true)
+User.create(name: 'oriverk', email: 'se.sterroristalqaeda@gmail.com', password: 'riverfield',profile:"同情するなら金を(　ﾟдﾟ)ｸﾚ" admin: true)
 Post.create(user_id: 1, name: 'admin-post', content: "# hajimeteno
 ## capture dayo
 

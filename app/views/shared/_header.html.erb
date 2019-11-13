@@ -10,7 +10,7 @@
       <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <a class="nav-link" href="/users/<%=current_user.id %>">Account<span class="sr-only">(current)</span></a>
+          <%= link_to 'Account', edit_user_path ,class:"nav-link"%>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="/logout">Logout</a>
