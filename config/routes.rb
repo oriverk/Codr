@@ -4,15 +4,16 @@ Rails.application.routes.draw do
     
   root 'posts#index'
   resources :posts
+
   get 'user' => 'users#edit', as: :edit_user
   patch 'user' => 'users#update'
   put 'user' => 'users#update'
   delete 'user' => 'users#destroy'
 
 
-  # devise_for :users, controllers: {
-  #   sessions: 'devise/sessions'
-  # }
+  devise_for :users, controllers: {
+    sessions: 'devise/sessions'
+  }
  
 
   devise_scope :user do

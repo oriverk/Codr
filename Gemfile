@@ -83,3 +83,6 @@ gem 'redcarpet'
 
 # meta-tag
 gem 'meta-tags'
+
+# env
+gem 'dotenv'

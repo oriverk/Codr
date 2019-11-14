@@ -23,12 +23,12 @@
         
       <div class="field">
         <%= form.label :content %>
-        <%= form.text_area :content,placeholder: "u can write and code with markdown-system!",size:"40x20" %>  
+        <%= form.text_area :content, size:"40x20", placeholder: "u can write and code with markdown-system!" %>  
       </div>
         
       <div class="actions">
         <%= link_to 'Back', posts_path , type:"button", class:"btn btn-outline-dark"%>
-        <%= form.submit "投稿する" , type:"button", class:"btn btn-outline-dark"%>
+        <%= form.submit "Post" ,class:"btn btn-outline-dark"%>
       </div>           
     <% end %>
   </div> 
