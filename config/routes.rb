@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
 
   devise_for :users, controllers: {
-    sessions: 'devise/sessions'
+    omniauth_callbacks: 'devise/omniauth_callbacks'
   }
  
 
