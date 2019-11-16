@@ -87,5 +87,5 @@ gem 'meta-tags'
 # env
 gem 'dotenv-rails', groups: [:development, :test]
 
-# twitter
+# twitter for posting
 gem 'twitter'
