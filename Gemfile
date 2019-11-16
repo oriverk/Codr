@@ -68,7 +68,7 @@ gem 'rails-i18n'
 
 # authetication
 gem 'devise'
-gem 'omniauth'
+# gem 'omniauth'
 gem 'omniauth-twitter'
 gem "omniauth-rails_csrf_protection"
 
@@ -85,4 +85,7 @@ gem 'redcarpet'
 gem 'meta-tags'
 
 # env
-gem 'dotenv'
+gem 'dotenv-rails', groups: [:development, :test]
+
+# twitter
+gem 'twitter'

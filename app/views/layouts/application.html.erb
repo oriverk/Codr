@@ -15,6 +15,12 @@
     <div class="body-container">
       <%= render :partial => 'shared/header' %>
       <div class="yield-container">
+        <% if notice.present? %>
+          <p id="notice" class="alert alert-info" role="alert"><%= notice %></p>
+        <% end %>
+        <% if alert.present? %>
+          <p id="alert" class="alert alert-info" role="alert"><%= alert %></p>
+        <% end %>  
         <%= yield %>
       </div>  
       <%= render :partial => 'shared/footer' %>

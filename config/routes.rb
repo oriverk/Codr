@@ -11,9 +11,7 @@ Rails.application.routes.draw do
   delete 'user' => 'users#destroy'
 
 
-  devise_for :users, controllers: {
-    omniauth_callbacks: 'devise/omniauth_callbacks'
-  }
+  devise_for :users, controllers: {:omniauth_callbacks => "omniauth_callbacks" }
  
 
   devise_scope :user do

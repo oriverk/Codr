@@ -1,8 +1,5 @@
-  <% set_meta_tags og:{image:@post.image} %>
+﻿  <% set_meta_tags og:{image:@post.image} %>
 
-  <% if notice.present? %>
-  <p id="notice" class="alert alert-info" role="alert"><%= notice %></p>
-  <% end %>
   <div class="posting-container">
     <% if user_signed_in? %>
     <%=link_to 'New Post', new_post_path(user_id: current_user.id) , type:"button", class:"btn btn-outline-dark btn-block"%>
@@ -19,7 +16,7 @@
         <%= form_with(model: @post, local: true) do |form| %>
         <%= form.hidden_field :user_id, :value => current_user.id %>
         <%= form.hidden_field :image %>
-        <%= form.submit "tweet" ,onclick:'tweet()', id:"tweet", type:"button" ,class:"btn" %>
+        <%= form.submit "tweet" ,onclick:'tweet()', id:"tweet",class:"btn" %>
         <% end %>
       <% end %>
       <%= link_to 'Back', posts_path , type:"button", class:"btn btn-outline-dark" %>

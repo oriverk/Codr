@@ -1,8 +1,9 @@
-# frozen_string_literal: true
+﻿# frozen_string_literal: true
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  config.omniauth :twitter, ENV['API_Key'], ENV['API_Secret']
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -262,8 +263,9 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
  
   # config.omniauth :twitter, "API key", "API secret key", callback_url: "Twitter Application Managementで設定したCallback URLの下段のURL"
-  config.omniauth :twitter, ENV['TWITTER_ID'], ENV['TWITTER_APP_SECRET'], callback_url:"http://192.168.33.10:3000/users/omniauth_callbacks"
-  config.omniauth :twitter, ENV['TWITTER_ID'], ENV['TWITTER_APP_SECRET'], callback_url:"http://codr0.herokuapp.com/users/omniauth_callbacks"
+  # config.omniauth :twitter, ENV['API_key'], ENV['API_secret_key'], callback_url:"http://192.168.33.10:3000/users/omniauth_callbacks"
+  # config.omniauth :twitter, ENV['API_key'], ENV['API_secret_key'], callback_url:"http://codr0.herokuapp.com/users/omniauth_callbacks"
+  
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
