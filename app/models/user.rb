@@ -8,11 +8,17 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
  def self.from_omniauth(auth)
-    find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |user|
+    find_or_create_by!(provider: auth["provider"], uid: auth["uid"]) do |user|      
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.username = auth["info"]["nickname"]
+      user.email = User.dummy_email(auth)
     end
+  end
+
+  # when provider exists, donot require password
+  def password_required?
+    super && provider.blank?
   end
 
   def self.new_with_session(params, session)
@@ -23,5 +29,11 @@ class User < ApplicationRecord
     else
       super
     end
+  end
+
+  private
+
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
   end
 end
