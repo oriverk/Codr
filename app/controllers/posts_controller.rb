@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update destroy]
+  before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_twitter_client, only: %i[show index update]
 
   # GET /posts
   # GET /posts.json
@@ -11,7 +12,7 @@ class PostsController < ApplicationController
     @posts = if user_signed_in?
                Post.where(user_id: current_user.id)
              else Post.all
-             end
+             end        
   end
 
   # GET /posts/1
@@ -43,7 +44,7 @@ class PostsController < ApplicationController
       end
     end
   end
-
+require 'twitter'
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
@@ -51,6 +52,14 @@ class PostsController < ApplicationController
       if @post.update(post_params)
         format.html { redirect_to post_path, notice: 'Post was successfully updated.' }
         format.json { render :index, status: :ok, location: post }
+        #@client.update!("#codr0 https://codr0.herokuapp.com/posts/#{@post.id} "+SecureRandom.hex(16))
+        status = "#codr0 " + "https://codr0.herokuapp.com/posts/#{@post.id}" 
+        options = "#{SecureRandom.hex(16)}.jpg"
+        
+        base64Image = @post.image.split(',')[1].encode()
+        decodedBinary = Base64.decode64(base64Image)
+
+        @client.update_with_media(status, decodedBinary , options)
       else
         format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -79,4 +88,14 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:user_id, :name, :content, :date, :image)
   end
+
+  def set_twitter_client
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV['API_Key']
+      config.consumer_secret     = ENV['API_Secret']
+      config.access_token        = ENV['Access_Token']
+      config.access_token_secret = ENV['Access_Token_Secret']
+    end
+  end
 end
+

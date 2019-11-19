@@ -1,4 +1,4 @@
-<%= form_with(model: @user, local: true) do |form| %>
+﻿<%= form_with(model: @user, local: true) do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -21,14 +21,17 @@
         <%= form.label :profile %>
         <%= form.text_area :profile, :placeholder => "" %>
       </div>
-      
-      
+      <% if current_user.provider.blank? %>
       <div class="field">
         <p>メールアドレス:<%= current_user.email %></p>
         <%= link_to "Access here If u wanna change Email and Password", register_path %>
       </div>
+       <% end %>
       <div class="actions">
         <%= form.submit %>
       </div>
     </div>
 <% end %>
+<div class="actions">
+  <%= link_to "Delete my account" , register_path, method: :delete, data:{confirm: "Are you sure?"} %>
+</div>

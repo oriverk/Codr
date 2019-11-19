@@ -20,15 +20,15 @@
          <%= form.label :name %>
         <%= form.text_field :name%> 
       </div>
-        
-      <div class="field">
+
+      <div class="field" id="capture">
         <%= form.label :content %>
         <%= form.text_area :content, size:"40x20", placeholder: "u can write and code with markdown-system!" %>  
       </div>
-        
+
       <div class="actions">
         <%= link_to 'Back', posts_path , type:"button", class:"btn btn-outline-dark"%>
-        <%= form.submit "Post" ,class:"btn btn-outline-dark"%>
+        <%= form.submit "Post" ,class:"btn btn-outline-dark", id:"btn" %>
       </div>           
     <% end %>
-  </div> 
+  </div>
