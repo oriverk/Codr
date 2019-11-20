@@ -50,11 +50,8 @@ class PostsController < ApplicationController
         logger.debug "=========param: #{params[:post]}======================"
         logger.debug "------------params2: #{params[:post][:prtsc]}----------------"
         if @post.parse_base64(params[:post][:prtsc])
-          logger.debug '========This is maybe only edit and update'
         else
-          logger.debug '==========This is maybe shared with Twitter ========='
         end
-        logger.debug '--------------inner of @post.update ----------------'
         format.html { redirect_to post_path, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: post }
       else
