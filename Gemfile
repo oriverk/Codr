@@ -89,3 +89,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 # twitter for posting
 gem 'twitter'
+
+# cloud-storage
+gem 'aws-sdk-s3', require: false

@@ -1,13 +1,7 @@
-﻿  <% set_meta_tags og:{image:@post.image} %>
-  <input type="button"><% @client.update("テスト") %>
-
-  <script>
-   // var btn = document.getElementById('tweet');
- 
-   // btn.addEventListener('click', function() {
-   // alert('script');
-   // })
-  </script>
+﻿  
+<% if @post.prtsc.attached? %>
+  <% set_meta_tags og:{image:@post.prtsc} %>
+<% end %>
 
   <div class="posting-container">
     <% if user_signed_in? %>
@@ -23,10 +17,9 @@
     <div class="post-action">
       <% if user_signed_in? %>
         <%= form_with(model: @post, local: true) do |form| %>
-        <%= form.hidden_field :user_id, :value => current_user.id %>
-        <input type="hidden" id="aaa" value="<%= @post.id %>">
-        <%= form.hidden_field :image %>
-        <%= form.submit "tweet" , id:"tweet",class:"btn" %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+        <%= form.hidden_field :prtsc, value: "" %>
+        <input type="submit" name="commit" value="tweet" id="tweet" class="btn" data-disable-with="tweet" target="_blank" onclick=window.open("https://twitter.com/intent/tweet?url=htts://codr0.herokuapp.com/posts/#{@post.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw")>
         <% end %>
       <% end %>
       <%= link_to 'Back', posts_path , type:"button", class:"btn btn-outline-dark" %>
@@ -35,30 +28,19 @@
         <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } , type:"button", class:"btn btn-outline-dark" %>
       <% end %>
     </div>
-  </div>      
+  </div> 
     <script type="text/javascript">
-      html2canvas(document.querySelector("#capture")).then(canvas => {
+      html2canvas(document.querySelector("#capture"),{scale:1, width:600}).then(canvas => {
         var base64 = canvas.toDataURL('image/jpeg', 1.0);
         //document.getElementById('test_image_base64').setAttribute('src', base64);
-        document.getElementById('post_image').setAttribute('value', base64);  
-      });
-  </script>
-  <script>
-    function tweetClient(){
-      var base = document.getElementById('post_image').value;
-      //var postId = document.getElementById('aaa').textContent;
-      var postId = document.getElementById('aaa').value;
-
-      var tweetUrl = "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/" + postId +"&button_hashtag=Codr0&ref_src=twsrc%5Etfw";
-      //window.open(tweetUrl);
-      //alert(postId);
-      //alert(base);
-    }
-  </script>
+        document.getElementById('post_prtsc').setAttribute('value', base64);  
+        });
+      </script>
+  
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script>
       function tweet(){
-        window.open("https://twitter.com/intent/tweet?url=htts://codr0.herokuapp.com/posts/23&button_hashtag=Codr0&ref_src=twsrc%5Etfw", 'tweet', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
+        window.open("https://twitter.com/intent/tweet?url=htts://codr0.herokuapp.com/posts/#{@post.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", 'tweet', 'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');
       }
     </script>
 

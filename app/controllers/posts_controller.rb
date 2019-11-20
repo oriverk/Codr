@@ -3,7 +3,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new edit update destroy]
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :set_twitter_client, only: %i[show index update]
 
   # GET /posts
   # GET /posts.json
@@ -31,7 +30,6 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    # @post = Post.new(post_params)
     @post = Post.new(post_params)
 
     respond_to do |format|
@@ -44,26 +42,25 @@ class PostsController < ApplicationController
       end
     end
   end
-require 'twitter'
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to post_path, notice: 'Post was successfully updated.' }
-        format.json { render :index, status: :ok, location: post }
-        #@client.update!("#codr0 https://codr0.herokuapp.com/posts/#{@post.id} "+SecureRandom.hex(16))
-        status = "#codr0 " + "https://codr0.herokuapp.com/posts/#{@post.id}" 
-        options = "#{SecureRandom.hex(16)}.jpg"
-        
-        base64Image = @post.image.split(',')[1].encode()
-        decodedBinary = Base64.decode64(base64Image)
-
-        @client.update_with_media(status, decodedBinary , options)
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+        if @post.update!(post_params)
+          logger.debug "=========param: #{params[:post]}======================"
+          logger.debug "------------params2: #{params[:post][:prtsc]}----------------"
+          if @post.parse_base64(params[:post][:prtsc])
+            logger.debug "========This is maybe only edit and update"
+          else
+            logger.debug "==========This is maybe shared with Twitter ========="
+          end
+          logger.debug "--------------inner of @post.update ----------------"
+          format.html { redirect_to post_path, notice: 'Post was successfully updated.' }
+          format.json { render :show, status: :ok, location: post }
+        else
+          format.html { render :edit }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
     end
   end
 
@@ -86,16 +83,7 @@ require 'twitter'
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:user_id, :name, :content, :date, :image)
-  end
-
-  def set_twitter_client
-    @client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = ENV['API_Key']
-      config.consumer_secret     = ENV['API_Secret']
-      config.access_token        = ENV['Access_Token']
-      config.access_token_secret = ENV['Access_Token_Secret']
-    end
+    params.require(:post).permit(:user_id, :name, :content, :date)
   end
 end
 

@@ -14,14 +14,13 @@
   <div class="posting-wrapper">
     <%= form.hidden_field :user_id, :value => current_user.id %>
       <%= form.hidden_field :date, :value => Time.now %> 
-      <%= form.hidden_field :image, :value => @post.image %>
         
       <div class="field">
          <%= form.label :name %>
         <%= form.text_field :name%> 
       </div>
 
-      <div class="field" id="capture">
+      <div class="field">
         <%= form.label :content %>
         <%= form.text_area :content, size:"40x20", placeholder: "u can write and code with markdown-system!" %>  
       </div>
