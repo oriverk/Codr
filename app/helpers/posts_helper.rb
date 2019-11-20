@@ -3,6 +3,6 @@
 module PostsHelper
   require 'twitter'
   def tweetClientHelper
-    @client.update("tweet test by posts_helper_method")
-  end 
+    @client.update('tweet test by posts_helper_method')
+  end
 end

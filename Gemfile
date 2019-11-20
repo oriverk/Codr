@@ -69,14 +69,12 @@ gem 'rails-i18n'
 # authetication
 gem 'devise'
 # gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-twitter'
-gem "omniauth-rails_csrf_protection"
-
 
 # japanize devise
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
 
 # markdown
 gem 'redcarpet'
@@ -85,7 +83,7 @@ gem 'redcarpet'
 gem 'meta-tags'
 
 # env
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', groups: %i[development test]
 
 # twitter for posting
 gem 'twitter'

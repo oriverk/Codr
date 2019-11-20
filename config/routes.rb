@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-    
   root 'posts#index'
   resources :posts
 
@@ -10,8 +9,8 @@ Rails.application.routes.draw do
   put 'user' => 'users#update'
   delete 'user' => 'users#destroy'
 
-  devise_for :users, controllers: {:omniauth_callbacks => "omniauth_callbacks" }
- 
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+
   devise_scope :user do
     get 'signup', to: 'devise/registrations#new'
     post 'signup', to: 'devise/registrations#create'
@@ -25,6 +24,6 @@ Rails.application.routes.draw do
     put 'register' => 'devise/registrations#update'
     delete 'register' => 'devise/registrations#destroy'
   end
- 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

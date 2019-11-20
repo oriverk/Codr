@@ -11,13 +11,12 @@ class PostsController < ApplicationController
     @posts = if user_signed_in?
                Post.where(user_id: current_user.id)
              else Post.all
-             end        
+             end
   end
 
   # GET /posts/1
   # GET /posts/1.json
-  def show
-  end
+  def show; end
 
   # GET /posts/new
   def new
@@ -25,7 +24,7 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit;end
+  def edit; end
 
   # POST /posts
   # POST /posts.json
@@ -42,25 +41,26 @@ class PostsController < ApplicationController
       end
     end
   end
+
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
-        if @post.update!(post_params)
-          logger.debug "=========param: #{params[:post]}======================"
-          logger.debug "------------params2: #{params[:post][:prtsc]}----------------"
-          if @post.parse_base64(params[:post][:prtsc])
-            logger.debug "========This is maybe only edit and update"
-          else
-            logger.debug "==========This is maybe shared with Twitter ========="
-          end
-          logger.debug "--------------inner of @post.update ----------------"
-          format.html { redirect_to post_path, notice: 'Post was successfully updated.' }
-          format.json { render :show, status: :ok, location: post }
+      if @post.update!(post_params)
+        logger.debug "=========param: #{params[:post]}======================"
+        logger.debug "------------params2: #{params[:post][:prtsc]}----------------"
+        if @post.parse_base64(params[:post][:prtsc])
+          logger.debug '========This is maybe only edit and update'
         else
-          format.html { render :edit }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
+          logger.debug '==========This is maybe shared with Twitter ========='
         end
+        logger.debug '--------------inner of @post.update ----------------'
+        format.html { redirect_to post_path, notice: 'Post was successfully updated.' }
+        format.json { render :show, status: :ok, location: post }
+      else
+        format.html { render :edit }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -86,4 +86,3 @@ class PostsController < ApplicationController
     params.require(:post).permit(:user_id, :name, :content, :date)
   end
 end
-

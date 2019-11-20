@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   # def index
-    
+
   #   @userPosts = Post.where(user: current_user.id)
   #   @userPostsCount = @userPosts.to_a.size
   # end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-  @user = current_user
+    @user = current_user
   end
 
   # user /users
