@@ -86,7 +86,7 @@ gem 'meta-tags'
 gem 'dotenv-rails', groups: %i[development test]
 
 # twitter for posting
-gem 'twitter'
+# gem 'twitter'
 
 # cloud-storage
 gem 'aws-sdk-s3', require: false

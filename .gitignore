@@ -28,3 +28,5 @@
 
 database.yml
 .env
+.vscode
+/app/models/postTmp.rb

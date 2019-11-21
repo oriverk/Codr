@@ -2,7 +2,6 @@
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
       <% post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -13,21 +12,18 @@
 
   <div class="posting-wrapper">
     <%= form.hidden_field :user_id, :value => current_user.id %>
-      <%= form.hidden_field :date, :value => Time.now %> 
-        
-      <div class="field">
-         <%= form.label :name %>
-        <%= form.text_field :name%> 
-      </div>
-
-      <div class="field">
-        <%= form.label :content %>
-        <%= form.text_area :content, size:"40x20", placeholder: "u can write and code with markdown-system!" %>  
-      </div>
-
-      <div class="actions">
-        <%= link_to 'Back', posts_path , type:"button", class:"btn btn-outline-dark"%>
-        <%= form.submit "Post" ,class:"btn btn-outline-dark", id:"btn" %>
-      </div>           
-    <% end %>
+    <%= form.hidden_field :date, :value => Time.now %> 
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name%> 
+    </div>
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.text_area :content, size:"40x20", placeholder: "u can write and code with markdown-system!" %>  
+    </div>
+    <div class="actions">
+      <%= link_to 'Back', posts_path , type:"button", class:"btn btn-outline-dark"%>
+      <%= form.submit "Post" ,class:"btn btn-outline-dark", id:"btn" %>
+    </div>           
   </div>
+<% end %>

@@ -1,51 +1,31 @@
-﻿  
-<% if @post.prtsc.attached? %>
-  <% set_meta_tags og:{image:@post.prtsc} %>
+﻿<% if @post.prtsc.attached? %>
+  <% set_meta_tags og:{image: @post.prtsc} %>
 <% end %>
 
-  <div class="posting-container">
-    <% if user_signed_in? %>
+<div class="posting-container">
+  <% if user_signed_in? %>
     <%=link_to 'New Post', new_post_path(user_id: current_user.id) , type:"button", class:"btn-outline-dark btn-block"%>
-    <% else %>
+  <% else %>
     <%=link_to 'New Post', 'login' , type:"button", class:"btn btn-outline-dark btn-block"%>
-    <% end %>
+  <% end %>
+</div>
+<div class="post-container">
+  <div id="capture" class="content">
+    <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(@post.content).html_safe %>
   </div>
-  <div class="post-container">
-    <div id="capture" class="content">
-        <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(@post.content).html_safe %>
-    </div>
-    <div class="post-action">
-      <% if user_signed_in? %>
-        <%= form_with(model: @post, local: true) do |form| %>
+  <div class="post-action">
+    <% if user_signed_in? %>
+      <%= form_with(model: @post, local: true) do |form| %>
         <%= form.hidden_field :user_id, value: current_user.id %>
         <%= form.hidden_field :id, value: @post.id %>
         <%= form.hidden_field :prtsc, value: "" %>
         <%= form.submit "Post", class:"btn btn-outline-dark", id:"tweet", value:"tweet" %>
-        <% end %>
       <% end %>
-      <%= link_to 'Back', posts_path , type:"button", class:"btn btn-outline-dark" %>
-      <% if user_signed_in? %>
-        <%= link_to 'Edit', edit_post_path(@post) , type:"button", class:"btn btn-outline-dark" %>
-        <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } , type:"button", class:"btn btn-outline-dark" %>
-      <% end %>
-    </div>
-  </div> 
-    <script type="text/javascript">
-      html2canvas(document.querySelector("#capture"),{scale:1, width:600}).then(canvas => {
-        var base64 = canvas.toDataURL('image/jpeg', 1.0);
-        //document.getElementById('test_image_base64').setAttribute('src', base64);
-        document.getElementById('post_prtsc').setAttribute('value', base64);
-        });
-      </script>
-
-    <script>
-      var base = 'https://twitter.com/intent/tweet?url=';
-      var pageUrl = 'https://codr0.herokuapp.com/posts/' + document.getElementById('post_id').value;
-      var option = '&button_hashtag=Codr0&ref_src=twsrc%5Etfw';
-      var href = base + pageUrl + option;
-      var myfunc = document.getElementById('tweet');
-      myfunc.addEventListener('click', function() {
-        window.open( href );
-      });
-    </script>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <% end %>
+    <%= link_to 'Back', posts_path , type:"button", class:"btn btn-outline-dark" %>
+    <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_post_path(@post) , type:"button", class:"btn btn-outline-dark" %>
+      <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } , type:"button", class:"btn btn-outline-dark" %>
+    <% end %>
+  </div>
+</div> 
