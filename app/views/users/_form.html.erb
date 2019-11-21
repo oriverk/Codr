@@ -11,27 +11,33 @@
     </div>
   <% end %>
 
+
     <div class="setting-wrapper">
-      <h1>Account Setting</h1>
-      <div class="field">
-        <%= form.label :name %>
-        <%= form.text_field :name, :placeholder => "name" %>
+      <h1>Account Setting</h1><br>
+      <div class="field input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Username</span>
+        </div>
+        <%= form.text_field :name, placeholder: "name" , autofocus: true, autocomplete: "name", class:"form-control" %>
       </div>
-      <div class="field">
-        <%= form.label :profile %>
-        <%= form.text_area :profile, :placeholder => "" %>
+
+      <div class="field input-group">
+        <%= form.text_area :profile, size:"x10", placeholder: "profile" ,autofocus: true, autocomplete: "profile", class:"form-control"%>
       </div>
+
       <% if current_user.provider.blank? %>
-      <div class="field">
-        <p>メールアドレス:<%= current_user.email %></p>
-        <%= link_to "Access here If u wanna change Email and Password", register_path %>
+      <div class="field input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">Email: <%= current_user.email %></span>
+        </div>
+        <em><%= link_to "Access here If u wanna change Email and Password", register_path %></em>
       </div>
        <% end %>
       <div class="actions">
-        <%= form.submit %>
+        <%= form.submit class:"btn btn-outline-dark btn-block"%>
       </div>
     </div>
 <% end %>
 <div class="actions">
-  <%= link_to "Delete my account" , register_path, method: :delete, data:{confirm: "Are you sure?"} %>
+  <%= button_to "Delete my account" , register_path, method: :delete, data:{confirm: "Are you sure?"}, class:"btn btn-outline-danger btn-block"%>
 </div>

@@ -13,17 +13,35 @@
   <div class="posting-wrapper">
     <%= form.hidden_field :user_id, :value => current_user.id %>
     <%= form.hidden_field :date, :value => Time.now %> 
-    <div class="field">
-      <%= form.label :name %>
-      <%= form.text_field :name%> 
+    <div class="field input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Title</span>
+      </div>
+      <%= form.text_field :name , placeholder:"null ok", autofocus: true, autocomplete: "name", class:"form-control"%> 
     </div>
-    <div class="field">
-      <%= form.label :content %>
-      <%= form.text_area :content, size:"40x20", placeholder: "u can write and code with markdown-system!" %>  
-    </div>
+    <div class="field input-group">
+      <%= form.text_area :content, size:"x15", placeholder: 
+"# Hello world
+##u can write and code with markdown!
+
+- you can use list style
+- like this
+
+1. and you can also like this 
+2. hogehoge
+
+```
+<div>
+  <p>Now We will implement syntax-highlight later.</p>
+<div>
+```
+
+" ,autofocus: true, autocomplete: "code", class:"form-control"%>  
+    </div><br>
     <div class="actions">
-      <%= link_to 'Back', posts_path , type:"button", class:"btn btn-outline-dark"%>
-      <%= form.submit "Post" ,class:"btn btn-outline-dark", id:"btn" %>
+      <%= form.submit "Post" ,class:"btn btn-outline-dark btn-block", id:"btn" %>
+      <br>
+      <%= button_to 'Back', posts_path, class:"btn btn-outline-dark btn-block"%>
     </div>           
   </div>
 <% end %>

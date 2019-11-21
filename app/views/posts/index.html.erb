@@ -1,8 +1,8 @@
 <div class="posting-container">
   <% if user_signed_in? %>
-    <%=link_to 'New Post', new_post_path(user_id: current_user.id) , type:"button", class:"btn btn-outline-dark btn-block"%>
+    <%=link_to 'New Post', new_post_path(user_id: current_user.id) , class:"btn btn-outline-dark btn-block", type:"button"%>
   <% else %>
-    <%=link_to 'New Post', 'login' , type:"button", class:"btn btn-outline-dark btn-block"%>
+    <%=link_to 'New Post', 'login' , class:"btn btn-outline-dark btn-block", type:"button"%>
   <% end %>
 </div>
 
@@ -27,11 +27,11 @@
               <%= form.submit "Post", class:"btn btn-outline-dark", id:"tweet", value:"tweet" %>
             <% end %>
           <% else %>
-            <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{post.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", type:"button", class:"btn btn-outline-dark", target:"_blank" %>
+            <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{post.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", type:"button", class:"btn btn-primary-dark", target:"_blank" %>
           <% end %>
-          <%= link_to 'Show', post, type:"button", class:"btn btn-outline-dark" %>
-          <%= link_to 'Edit', edit_post_path(post) , type:"button", class:"btn btn-outline-dark"%>
-          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } , type:"button", class:"btn btn-outline-dark"%>
+          <%= link_to 'Show', post, class:"btn btn-outline-dark" , type:"button"%>
+          <%= link_to 'Edit', edit_post_path(post), class:"btn btn-outline-dark", type:"button"%>
+          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger", type:"button"%>
         <% end %> 
       </div>
     </div>
