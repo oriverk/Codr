@@ -1,5 +1,6 @@
 ﻿<% if @post.prtsc.attached? %>
-  <% set_meta_tags og:{image: @post.prtsc} %>
+    <%# image_tag @post.prtsc.service_url, alt:"service url Not Found"%>
+    <%= image_tag url_for(@post.prtsc), alt:"service url Not Found"%>
 <% end %>
 
 <div class="posting-container">

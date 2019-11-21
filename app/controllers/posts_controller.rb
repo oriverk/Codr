@@ -7,12 +7,31 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    # @posts = Post.all
     @posts = if user_signed_in?
-               Post.where(user_id: current_user.id)
-             else Post.all
+               Post.where(user_id: current_user.id).order(updated_at: :desc)
              end
+    ad = User.find_by(admin:true)
+    @admin = Post.find_by(user_id: ad.id)     
   end
+
+  # def search
+  #   if search_params.present?
+  #     search_params.each do |i|
+  #       @posts = Post.where(id:current_user.id).where("name = ?", i)
+  #     end
+  #     if @posts.blank?
+  #       respond_to do |format|
+  #       format.html { redirect_to posts_path, notice: 'Nothing found!' }
+  #       format.json { head :no_content }
+  #       end
+  #     end
+  #   else
+  #     respond_to do |format|
+  #       format.html { redirect_to posts_path, notice: 'Search Error!' }
+  #       format.json { head :no_content }
+  #     end
+  #   end
+  # end
 
   # GET /posts/1
   # GET /posts/1.json
@@ -79,4 +98,8 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:user_id, :name, :content, :date)
   end
+
+  # def search_params
+  #   params["search"].split(/ |　/)   
+  # end
 end
