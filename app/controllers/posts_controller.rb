@@ -92,6 +92,7 @@ class PostsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
+    @user = User.find(@post.user_id)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
@@ -112,7 +113,7 @@ class PostsController < ApplicationController
     post = Post.find_or_initialize_by(user_id: @admin.id)
     if post.new_record?
       post.update_attributes!(name: 'ruby rails omniauth twitter redcarpet js awss3', date: Time.now,
-                              content: "### Let's Write and Share your Code on SNS!\nI made this app as my portforlio\n[So plz access here](https://oriverk.github.io) or footer links.\n### What for\nCode shared on twitter looks not good.(e.g. User.all turns to link)\n### How\n1. Post code with markdown\n2. Push tweet, then the post will be saved onto AWS S3 as image\n\nImage are used only as og:image for twitter card\n\n```\n<h1>From Now<h2>\n<strong>Now format posts by using Redcarpet</strong>\n<div>\n  <p>Need to implement syntax-highlight function by Rouge<p>\n  <p>And to modify style of Redcarpet</p>\n  <p>And to implement more functions</p>\n</div>\n```")
+                              content: "### Let's Write and Share your Code on SNS!\nI made this app as my portforlio.\n[So plz access here](https://oriverk.github.io) or footer links.\n### What for\nCode shared on twitter looks not good.(e.g. User.all turns to link)\n### How\n1. Post code with markdown\n2. Push tweet, then the post will be saved onto AWS S3 as image\n\nImage are used only as og:image for twitter card\n\n```\n<h1>From Now<h2>\n<strong>Now format posts by using Redcarpet</strong>\n<div>\n  <p>Need to implement syntax-highlight function by Rouge<p>\n  <p>And to modify style of Redcarpet</p>\n  <p>And to implement more functions</p>\n</div>\n```")
     end
     @adminPost = Post.where(user_id: @admin.id).order(created_at: :asc).take
   end

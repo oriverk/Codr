@@ -4,19 +4,24 @@
 
 <div class="posting-container">
   <% if user_signed_in? %>
-    <%=link_to 'New Post', new_post_path(user_id: current_user.id), class:"btn btn-outline-dark btn-block"%>
+    <%=link_to 'New Post', new_post_path(user_id: current_user.id), class:"float-btn"%>
   <% else %>
-    <%=link_to 'New Post', 'login' , class:"btn btn-outline-dark btn-block"%>
+    <%=link_to 'New Post', 'login' , class:"float-btn"%>
   <% end %>
 </div>
+
 <div class="post-container">
+  <div class="post-info">
+    <p>Posted by <%= @user.name %></p>
+    <p>Updated at <%= @post.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
+    <p>Tags :<strong><%= @post.name %></strong></p>
+  </div>
   <div id="capture" class="content">
     <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(@post.content).html_safe %>
   </div>
   <div class="post-action">
     <% if user_signed_in? %>
       <%= form_with(model: @post, local: true) do |form| %>
-        <%= form.hidden_field :user_id, value: current_user.id %>
         <%= form.hidden_field :id, value: @post.id %>
         <%= form.hidden_field :prtsc, value: "" %>
         <%= form.submit "Post", class:"btn btn-outline-dark", id:"tweet", value:"tweet" %>
@@ -28,4 +33,13 @@
       <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } , type:"button", class:"btn btn-outline-dark" %>
     <% end %>
   </div>
-</div> 
+</div><br>
+
+<div class="preview-container">
+  <% unless @post.prtsc.attached? %>
+    <strong>Attention : This post hasn't saved as image yet. Please push "tweet".</strong>
+  <% end %>
+  <p>The following image is made with Base64 and different from saved image on AWS S3</p>
+  <img id="preview" alt="image preview" src="">
+</div>
+

@@ -1,3 +1,107 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// when the devise is larger than tablet
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+
+a.float-btn{
+  color:white;
+  font-weight: 700;
+  display:inline-block;
+  position:fixed;
+  right:13%;
+  bottom:13%;
+  align-items: center;
+  width:100px;
+  height:100px;
+  margin:0 auto;
+  padding:35px 10px 10px 14px;
+  border-radius: 50%;
+  background-color:#f39c12;
+  border:solid #f39c12 1.5px;
+  box-shadow: 0 1px 2px 1px rgba(0,0,0,.15);
+  cursor: pointer;
+  user-select: none;
+  &:visited{
+    color:black;
+  }
+  &:hover{
+    color:white;
+  }
+}
+
+.posts-container{
+  padding: 5px;
+}
+.post-container{
+  border:solid 0.5px grey;
+  padding:10px;
+  margin-bottom:5px;
+  .content{
+    border:solid 1px black;
+    margin-bottom:5px;
+    padding:10px;
+    background-color:white;
+    h1{font-size:20px;}
+    h2{font-size:18px;}
+    h3{font-size:17px;}
+    h4{font-size:16px;}
+    h5{font-size:16px;}
+    h6{font-size:14px;}
+    p,li{font-size:14px;}
+    pre {
+      width: auto;
+      padding: 10px;
+    }
+  }
+  .post-action{
+    display:flex;
+    form{
+      flex:auto;
+      input{
+        flex:auto;
+        width:100%;
+      }
+    }
+    a{
+      flex:auto;
+      text-align:center;
+      margin-left:5px;
+    }
+    #tweet{
+      background-color:#00acee;
+      margin-left:0;
+      color:white;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      &:hover{
+        color:black;
+      }
+    }
+  }
+}
+
+.preview-container{
+  border:solid 0.5px grey;
+  padding:10px;
+  margin-bottom:5px;
+  strong{
+    color:red;
+    font-weight: bold;
+  }
+  img{
+    max-width:100%;
+    height:auto;
+  }
+}
+
+.explanation-container{
+  h2{
+    text-align: center;
+  }
+}

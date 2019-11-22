@@ -1,29 +1,8 @@
 ﻿<footer>
-  <nav class="links nav nav-pills flex-column flex-sm-row">
-    <a class="flex-sm-fill text-sm-center nav-link" href="#">Q&A</a>
-    <a class="flex-sm-fill text-sm-center nav-link" href="#">利用規約</a>
-    <a class="flex-sm-fill text-sm-center nav-link" href="#">運営情報</a>
-    <a class="flex-sm-fill text-sm-center nav-link" href="https://twitter.com/Codr00" target="_blank" rel="noopener noreferrer">Twitter</a>
-    <a class="flex-sm-fill text-sm-center nav-link" href="https://github.com/oriverk/Codr" target="_blank" rel="noopener noreferrer" >Github</a>
+  <nav>
+    <a id="footer-margin-left-none"class="nav-link" href="/">Codr0</a>
+    <a class="nav-link" href="https://oriverk.github.io" target="_blank" rel="noopener noreferrer">About</a>
+    <a class="nav-link" href="https://twitter.com/Codr00" target="_blank" rel="noopener noreferrer">Twitter</a>
+    <a class="nav-link" href="https://github.com/oriverk/Codr" target="_blank" rel="noopener noreferrer" >Github</a>
   </nav>
 </footer>
-
-<script type="text/javascript">
-  html2canvas(document.querySelector("#capture"),{scale:1, width:600}).then(canvas => {
-    var base64 = canvas.toDataURL('image/jpeg', 1.0);
-    document.getElementById('post_prtsc').setAttribute('value', base64);
-    document.getElementById('admin').setAttribute('src', base64 );
-    });
-</script>
-
-<script>
-  var base = 'https://twitter.com/intent/tweet?url=';
-  var pageUrl = 'https://codr0.herokuapp.com/posts/' + document.getElementById('post_id').value;
-  var option = '&button_hashtag=Codr0&ref_src=twsrc%5Etfw';
-  var href = base + pageUrl + option;
-  var twit = document.getElementById('tweet');
-  twit.addEventListener('click', function() {
-    window.open( href );
-  });
-</script>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

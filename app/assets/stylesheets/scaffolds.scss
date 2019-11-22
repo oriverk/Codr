@@ -1,28 +1,37 @@
-$tab: 680px; // タブレット
+@import "./users";
+@import "./posts";
 
+$tab: 680px; // タブレット
 @mixin tab {
   @media (max-width: ($tab)) {
     @content;
   }
 }
 
-// 例
 // .box {
 //   @include tab {
 //     background-color: blue;
 //   };
 // }
 
+.wrap{
+  min-height: 100%;
+  position: relative;
+  background-color: #16202a;
+}
 body {
-  color: #333;
-  margin: 0 auto;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  @include tab {
-    width: 100%;
-  };
 }
+
+.body-container{
+  width:680px;
+  margin: 0 auto;
+  background-color:rgb(240,240,240);
+  border:solid 0.5px grey;
+}
+
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -30,19 +39,11 @@ p, ol, ul, td {
   line-height: 18px;
 }
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
 a {
   color: #000;
-
   &:visited {
     color: #666;
   }
-
   &:hover {
     color: #fff;
     background-color: #000;
@@ -101,77 +102,17 @@ label {
 }
 
 /* custom from here */
-#tweet{
-  background-color:#00acee;
-  margin-left:0;  
-}
 
-body{
-  .body-container{
-    width:680px;
-    margin: auto;
-    background-color:rgb(245, 245, 245);
-      @include tab {
-        width: 100%;
-        margin: auto;
-      };
-    }
-}   
 
 header{
-nav{ 
-  .nav {
-    float:right;
-    .nav-item.active{
-      float:left;
-    }
+  nav.container.navbar.navbar-dark.bg-dark{
+    width:auto;
   }
-}
 }
 
 .yield-container{
+  margin-bottom: 2px;
   margin:20px;
-  .post-container{
-    padding: auto;
-
-  }
-}
-
-.posting-container{
-  text-align:center;
-  height:40px;
-  width:100%;
-  margin:5px 0;
-}
-.posts-container{
-  padding: 5px;
-}
-
-.post-container{
-  border:solid 1px red;
-  padding:10px;
-  margin-bottom:5px;
-  .content{
-    margin:10px auto;
-    padding:10px;
-    background-color:white;
-  }
-  .post-action{
-    display:flex;
-    form{
-      flex:auto;
-      input{
-        flex:auto;
-        
-        width:100%;
-      }
-    }
-    a{
-      flex:auto;
-      text-align:center;
-      margin-left:5px;
-    }
-  }  
 }
 
 .form-container{
@@ -179,14 +120,15 @@ nav{
 }
 
 footer nav {
+  bottom:0;
+  background-color:#353a40;
   display:flex;
-  a{
-  flex:auto;  
-  font:white;
-  font-weight: bold;
-  }
+    a.nav-link{
+    flex:auto;
+    color:white;
+    font-weight: bold;
+    text-align: center;
+    border-left:solid 1px white;
+    border-right:solid 1px white;
+    }
 }
-
-
-
-
