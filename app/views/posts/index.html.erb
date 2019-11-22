@@ -41,7 +41,7 @@
         <div class="user-name"><p>only for explanation</p></div>
       </div>
       <div class="post-info">
-        <p class="date"><%# @adminPost.date %></p>
+        <p class="date"></p>
       </div>
       <div id="capture" class="content">
         <div><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(@adminPost.content).html_safe %></div>
