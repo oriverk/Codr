@@ -1,7 +1,7 @@
 @import "./users";
 @import "./posts";
 
-$tab: 680px; // タブレット
+$tab: 680px; 
 @mixin tab {
   @media (max-width: ($tab)) {
     @content;
