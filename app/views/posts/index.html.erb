@@ -20,24 +20,40 @@
         <div><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(post.content).html_safe %></div>
       </div>
       <div class="post-action">
-        <% if user_signed_in? %>
-          <% unless post.prtsc.attached? %>
-            <%= form_with(model: post, local: true) do |form| %>
-              <%= form.hidden_field :id, value: post.id %>
-              <%= form.hidden_field :prtsc, value: "" %>
-              <%= form.submit "Post", class:"btn btn-outline-dark", id:"tweet", value:"tweet" %>
-            <% end %>
-          <% else %>
-            <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{post.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", type:"button", class:"btn btn-primary-dark", target:"_blank" %>
-          <% end %>
-          <%= link_to 'Show', post, class:"btn btn-outline-dark" , type:"button"%>
-          <%= link_to 'Edit', edit_post_path(post), class:"btn btn-outline-dark", type:"button"%>
-          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger", type:"button"%>
-        <% end %> 
+        <% if post.prtsc.attached? %>
+          <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{post.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", type:"button", class:"btn btn-primary-dark", target:"_blank" %>
+        <% end %>
+        <%= link_to 'Show', post, class:"btn btn-outline-dark" , type:"button"%>
+        <%= link_to 'Edit', edit_post_path(post), class:"btn btn-outline-dark", type:"button"%>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger", type:"button"%>
       </div>
     </div>
   <% end%>
 </div>
 <% end %>
 
-
+<% if !user_signed_in? || !@posts.present? || current_user.admin = true %>
+<div class="explanation-container">
+<h2>Welcome to Codr0!</h2>
+<div class="posts-container">
+    <div class="post-container">
+      <div class="user-info">
+        <div class="user-name"><p>only for explanation</p></div>
+      </div>
+      <div class="post-info">
+        <p class="date"><%# @adminPost.date %></p>
+      </div>
+      <div id="capture" class="content">
+        <div><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(@adminPost.content).html_safe %></div>
+      </div>
+      <p>Only tweet button is able to push.</p>
+      <div class="post-action">
+        <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{@adminPost.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", type:"button", class:"btn btn-primary-dark", target:"_blank" %>
+        <%= link_to 'Show', "", class:"btn btn-outline-dark" , type:"button" %>
+        <%= link_to 'Edit', "", class:"btn btn-outline-dark", type:"button" %>
+        <%= link_to 'Destroy', "", data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger", type:"button" %>
+      </div><br>
+    </div>
+</div>
+</div>
+<% end %>

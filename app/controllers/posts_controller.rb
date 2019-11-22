@@ -3,6 +3,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new edit update destroy]
   before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_admin_credentials, only: %i[index]
+  before_action :set_admin, only: %i[index]
 
   # GET /posts
   # GET /posts.json
@@ -10,8 +12,6 @@ class PostsController < ApplicationController
     @posts = if user_signed_in?
                Post.where(user_id: current_user.id).order(updated_at: :desc)
              end
-    ad = User.find_by(admin:true)
-    @admin = Post.find_by(user_id: ad.id)     
   end
 
   # def search
@@ -99,7 +99,21 @@ class PostsController < ApplicationController
     params.require(:post).permit(:user_id, :name, :content, :date)
   end
 
-  # def search_params
-  #   params["search"].split(/ |　/)   
-  # end
+  def set_admin_credentials
+    @nm = Rails.application.credentials.dig(:admin, :uid).to_s
+    @pr = Rails.application.credentials.dig(:admin, :provider).to_s
+  end
+
+  def set_admin
+    @admin = User.find_or_initialize_by(admin: true)
+    if @admin.new_record?
+      @admin.update_attributes!(provider: @pr, uid: @nm, email: "#{@nm}-#{@pr}@example.com", name: 'OriverK')
+    end
+    post = Post.find_or_initialize_by(user_id: @admin.id)
+    if post.new_record?
+      post.update_attributes!(name: 'ruby rails omniauth twitter redcarpet js awss3', date: Time.now,
+                              content: "### Let's Write and Share your Code on SNS!\nI made this app as my portforlio\n[So plz access here](https://oriverk.github.io) or footer links.\n### What for\nCode shared on twitter looks not good.(e.g. User.all turns to link)\n### How\n1. Post code with markdown\n2. Push tweet, then the post will be saved onto AWS S3 as image\n\nImage are used only as og:image for twitter card\n\n```\n<h1>From Now<h2>\n<strong>Now format posts by using Redcarpet</strong>\n<div>\n  <p>Need to implement syntax-highlight function by Rouge<p>\n  <p>And to modify style of Redcarpet</p>\n  <p>And to implement more functions</p>\n</div>\n```")
+    end
+    @adminPost = Post.where(user_id: @admin.id).order(created_at: :asc).take
+  end
 end
