@@ -17,7 +17,7 @@
     <p>Tags :<strong><%= @post.name %></strong></p>
   </div>
   <div id="capture" class="content">
-    <%= markdown(@post.content) %>
+    <%= sanitize(markdown(@post.content), tags: %w(div img h1 h2 h3 h4 h5 strong em a p pre code ), attributes: %w(class href)) %>
   </div>
   <div class="post-action">
     <% if user_signed_in? %>
