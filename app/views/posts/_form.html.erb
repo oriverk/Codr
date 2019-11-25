@@ -11,36 +11,22 @@
   <% end %>
 
   <div class="posting-wrapper">
-    <%= form.hidden_field :user_id, :value => current_user.id %>
-    <%= form.hidden_field :date, :value => Time.now %> 
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :date, value: Time.now %> 
     <div class="field input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Title</span>
       </div>
-      <%= form.text_field :name , placeholder:"null ok", autofocus: true, autocomplete: "name", class:"form-control"%>
+      <%= form.text_field :name , placeholder:"null ok", autofocus: true, class:"form-control"%>
     </div>
     <div class="field input-group">
-      <%= form.text_area :content, size:"x15",placeholder: 
-"# Hello world
-## u can post code with markdown fomart!
-
-- you can use list style
-- like this
-
-1. and you can also like this 
-2. hogehoge
-
-```
-<div>
-  <p>Inside code tag, u cannot use script for tag</p>
-  <p> and class href for attribute as a measure against XSS</p>
-<div>
-```" ,autofocus: true, autocomplete: "code", class:"form-control"%>
+      <%= form.text_area :content, size:"x15", class:"form-control",placeholder: "# Hello world\n## u can post code with markdown fomart!\n\n- you can use list style\n- like this\n\n1. and you can also like this \n2. hogehoge\n\n```\n<div>\n  <p>Inside code tag, u cannot use script for tag</p>\n  <p> and class href for attribute as a measure against XSS</p>\n<div>\n```" %>
     </div><br>
     <div class="actions">
-      <%= form.submit "Post" ,class:"btn btn-outline-dark btn-block", id:"btn" %>
-      <br>
-      <%= button_to 'Back', posts_path, class:"btn btn-outline-dark btn-block"%>
-    </div>           
-  </div>
+      <%= form.submit "Post" ,class:"btn btn-outline-dark btn-block" %>
+    </div>      
+  </div><br>
 <% end %>
+<div class="actions">
+  <%= button_to 'Back', posts_path, class:"btn btn-outline-dark btn-block"%>
+</div>     

@@ -66,9 +66,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update!(post_params)
-        if @post.parse_base64(params[:post][:prtsc])
-        end
-        format.html { redirect_to post_path, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: post }
       else
         format.html { render :edit }
