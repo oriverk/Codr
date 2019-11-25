@@ -14,6 +14,7 @@ class PostsController < ApplicationController
              end
   end
 
+  # for search func
   # def search
   #   if search_params.present?
   #     search_params.each do |i|
