@@ -17,12 +17,12 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Title</span>
       </div>
-      <%= form.text_field :name , placeholder:"null ok", autofocus: true, autocomplete: "name", class:"form-control"%> 
+      <%= form.text_field :name , placeholder:"null ok", autofocus: true, autocomplete: "name", class:"form-control"%>
     </div>
     <div class="field input-group">
-      <%= form.text_area :content, size:"x15", placeholder: 
+      <%= form.text_area :content, size:"x15",placeholder: 
 "# Hello world
-##u can write and code with markdown!
+## u can post code with markdown fomart!
 
 - you can use list style
 - like this
@@ -32,11 +32,9 @@
 
 ```
 <div>
-  <p>Now We will implement syntax-highlight later.</p>
+  <p>I will implement syntax-highlight later.</p>
 <div>
-```
-
-" ,autofocus: true, autocomplete: "code", class:"form-control"%>  
+```" ,autofocus: true, autocomplete: "code", class:"form-control"%>
     </div><br>
     <div class="actions">
       <%= form.submit "Post" ,class:"btn btn-outline-dark btn-block", id:"btn" %>

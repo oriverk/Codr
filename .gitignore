@@ -29,4 +29,4 @@
 database.yml
 .env
 .vscode
-/app/models/postTmp.rb
+postsTempHelper.rb

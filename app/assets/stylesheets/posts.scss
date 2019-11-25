@@ -20,7 +20,7 @@ a.float-btn{
   width:100px;
   height:100px;
   margin:0 auto;
-  padding:35px 10px 10px 14px;
+  padding:40px 10px 10px 14px;
   border-radius: 50%;
   background-color:#f39c12;
   border:solid #f39c12 1.5px;
@@ -43,7 +43,6 @@ a.float-btn{
   padding:10px;
   margin-bottom:5px;
   .content{
-    border:solid 1px black;
     margin-bottom:5px;
     padding:10px;
     background-color:white;
@@ -57,25 +56,20 @@ a.float-btn{
     pre {
       width: auto;
       padding: 10px;
+      white-space: pre-wrap ;
     }
   }
-  .post-action{
-    display:flex;
-    form{
+}
+
+.post-action{
+   display: flex;
+    .btn{
       flex:auto;
-      input{
-        flex:auto;
-        width:100%;
-      }
-    }
-    a{
-      flex:auto;
-      text-align:center;
-      margin-left:5px;
+      margin-left:4px;
     }
     #tweet{
-      background-color:#00acee;
       margin-left:0;
+      background-color:#00acee;
       color:white;
       font-weight: bold;
       letter-spacing: 0.1em;
@@ -84,7 +78,6 @@ a.float-btn{
       }
     }
   }
-}
 
 .preview-container{
   border:solid 0.5px grey;

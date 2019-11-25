@@ -1,5 +1,6 @@
 @import "./users";
 @import "./posts";
+@import "rouge";
 
 $tab: 680px; 
 @mixin tab {
@@ -13,16 +14,15 @@ $tab: 680px;
 //     background-color: blue;
 //   };
 // }
-
-.wrap{
-  min-height: 100%;
-  position: relative;
-  background-color: #16202a;
-}
+  
 body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  background-color: #16202a;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .body-container{
@@ -119,16 +119,17 @@ header{
   margin: auto;
 }
 
-footer nav {
-  bottom:0;
-  background-color:#353a40;
-  display:flex;
-    a.nav-link{
-    flex:auto;
-    color:white;
-    font-weight: bold;
-    text-align: center;
-    border-left:solid 1px white;
-    border-right:solid 1px white;
+footer {
+  nav {
+    background-color:#353a40;
+    display:flex;
+      a.nav-link{
+      flex:auto;
+      color:white;
+      font-weight: bold;
+      text-align: center;
+      border-left:solid 1px white;
+      border-right:solid 1px white;
     }
+  }
 }

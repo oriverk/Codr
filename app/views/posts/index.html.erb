@@ -16,7 +16,7 @@
         <p>Tags :<strong><%= post.name %></strong></p>
       </div>
       <div id="capture" class="content">
-        <div><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(post.content).html_safe %></div>
+        <div><%= markdown(post.content) %></div>
       </div>
       <div class="post-action">
         <% if post.prtsc.attached? %>
@@ -44,7 +44,7 @@
         <p class="date"></p>
       </div>
       <div id="capture" class="content">
-        <div><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(@adminPost.content).html_safe %></div>
+        <div><%= markdown(@adminPost.content) %></div>
       </div><br>
       <div class="post-action">
         <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{@adminPost.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet",class:"btn btn-primary-dark", target:"_blank" %>

@@ -17,7 +17,7 @@
     <p>Tags :<strong><%= @post.name %></strong></p>
   </div>
   <div id="capture" class="content">
-    <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true).render(@post.content).html_safe %>
+    <%= markdown(@post.content) %>
   </div>
   <div class="post-action">
     <% if user_signed_in? %>
@@ -27,10 +27,10 @@
         <%= form.submit "Post", class:"btn btn-outline-dark", id:"tweet", value:"tweet" %>
       <% end %>
     <% end %>
-    <%= link_to 'Back', posts_path , class:"btn btn-outline-dark" , type:"button"%>
+    <%= link_to 'Back', posts_path , class:"btn btn-outline-dark" %>
     <% if user_signed_in? %>
-      <%= link_to 'Edit', edit_post_path(@post) , type:"button", class:"btn btn-outline-dark" %>
-      <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } , type:"button", class:"btn btn-outline-dark" %>
+      <%= link_to 'Edit', edit_post_path(@post) , class:"btn btn-outline-dark" %>
+      <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-dark" %>
     <% end %>
   </div>
 </div><br>

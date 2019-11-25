@@ -79,6 +79,9 @@ gem 'devise-i18n-views'
 # markdown
 gem 'redcarpet'
 
+# syntax hightlight
+gem 'rouge'
+
 # meta-tag
 gem 'meta-tags'
 

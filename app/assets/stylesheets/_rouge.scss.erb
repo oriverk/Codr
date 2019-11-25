@@ -1,0 +1,22 @@
+<%= Rouge::Themes::Molokai.render(:scope => '.highlight') %>
+
+// Custome style for rouge formatter
+// formatter is defined in application_helper.rb
+.highlight {
+    margin-top: 5px 0;
+    pre {
+      overflow: auto;
+      word-wrap: normal;
+      white-space: pre;
+      font-size: 0.9em;
+      line-height: 1.5;
+      border-radius: 2px;
+      margin-bottom: 5px;
+        code {
+            font-size: 1.3em;
+            color: white;
+            table.rouge-table {
+            }
+        }
+    }
+}
