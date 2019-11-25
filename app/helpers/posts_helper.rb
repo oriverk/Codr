@@ -2,7 +2,6 @@
 
 module PostsHelper
   require 'rouge/plugins/redcarpet'
-
   # read Redcarpet options ans extensions for anti XSS.
   # https://github.com/vmg/redcarpet#and-its-like-really-simple-to-use
 
