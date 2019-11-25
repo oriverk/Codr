@@ -17,10 +17,10 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Title</span>
       </div>
-      <%= form.text_field :name , placeholder:"null ok", autofocus: true, class:"form-control"%>
+      <%= form.text_field :name , placeholder:"null ok, 50 characters maximum", autofocus: true, class:"form-control"%>
     </div>
     <div class="field input-group">
-      <%= form.text_area :content, size:"x15", class:"form-control",placeholder: "# Hello world\n## u can post code with markdown fomart!\n\n- you can use list style\n- like this\n\n1. and you can also like this \n2. hogehoge\n\n```\n<div>\n  <p>Inside code tag, u cannot use script for tag</p>\n  <p> and class href for attribute as a measure against XSS</p>\n<div>\n```" %>
+      <%= form.text_area :content, size:"x15", class:"form-control",placeholder: "# Hello world\n## u can post code with markdown fomart!\n**not null, 400 characters maximum\n\n- you can use list style\n\n1. and you can also like this \n\n```\n<div>\n  <p>Inside code tag, u cannot use script for tag</p>\n  <p> and class href for attribute as a measure against XSS</p>\n<div>\n```" %>
     </div><br>
     <div class="actions">
       <%= form.submit "Post" ,class:"btn btn-outline-dark btn-block" %>

@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable, :omniauthable, omniauth_providers: [:twitter]
   has_many :posts, dependent: :destroy
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :profile, length: { maximum: 160 }
 
   def self.from_omniauth(auth)
     find_or_create_by!(provider: auth['provider'], uid: auth['uid']) do |user|

@@ -18,11 +18,11 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">Username</span>
         </div>
-        <%= form.text_field :name, placeholder: "name" , autofocus: true, autocomplete: "name", class:"form-control" %>
+        <%= form.text_field :name, placeholder: "not null, 50 characters maximum" , autofocus: true, autocomplete: "name", class:"form-control" %>
       </div>
 
       <div class="field input-group">
-        <%= form.text_area :profile, size:"x10", placeholder: "profile" ,autofocus: true, autocomplete: "profile", class:"form-control"%>
+        <%= form.text_area :profile, size:"x10", placeholder: "null ok, 150 characters maximum" ,autofocus: true, autocomplete: "profile", class:"form-control"%>
       </div>
 
       <% if current_user.provider.blank? %>
