@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :posts
   # get 'search' => 'posts#search', as: :search
 
+  
   get 'user' => 'users#edit', as: :edit_user
   patch 'user' => 'users#update'
   put 'user' => 'users#update'
