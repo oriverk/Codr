@@ -119,8 +119,7 @@ header{
   margin: auto;
 }
 
-footer {
-  nav {
+footer nav {
     background-color:#353a40;
     display:flex;
       a.nav-link{
@@ -132,4 +131,3 @@ footer {
       border-right:solid 1px white;
     }
   }
-}
