@@ -5,16 +5,16 @@ module ApplicationHelper
     {
       title: 'Codr0',
       description: 'share code on Twitter',
-      #icon: [
-       # { href: image_url('') },
-        #{ href: image_url(''), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' }
-      #],
+      icon: [
+       { href: image_url('') },
+       { href: image_url(''), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' }
+      ],
       #noindex: !Rails.env.production?,
       canonical: request.original_url,
       charset: 'UTF-8',
       og: {
-        #title: :title,
-        #description: :description,
+        title: :title,
+        description: '',
         type: 'website',
         url: request.original_url,
         image: image_url(''),
