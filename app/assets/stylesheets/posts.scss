@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // when the devise is larger than tablet
+$tab: 680px; 
 @mixin tab {
   @media (max-width: ($tab)) {
     @content;
@@ -11,7 +12,7 @@
 
 a.float-btn{
   color:white;
-  font-weight: 700;
+  font-weight: 500;
   display:inline-block;
   position:fixed;
   right:13%;
@@ -27,6 +28,13 @@ a.float-btn{
   box-shadow: 0 1px 2px 1px rgba(0,0,0,.15);
   cursor: pointer;
   user-select: none;
+  @include tab{
+    width:60px;
+    height:60px;
+    font-weight: 300;
+    padding:14px 10px 10px 14px;
+    bottom:10%;
+  }
   &:visited{
     color:black;
   }

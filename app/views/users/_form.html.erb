@@ -39,5 +39,6 @@
     </div>
 <% end %>
 <div class="actions">
+  <%= button_to "Logout", "/logout" , data:{confirm: "Are you sure?"}, class:"btn btn-outline-dark btn-block" %>
   <%= button_to "Delete my account" , register_path, method: :delete, data:{confirm: "Are you sure?"}, class:"btn btn-outline-danger btn-block"%>
 </div>
