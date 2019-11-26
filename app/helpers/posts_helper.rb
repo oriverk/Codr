@@ -10,7 +10,7 @@ module PostsHelper
 
     # change # header to h2
     def header(text, level)
-      level += 1
+      level += 2
       "<h#{level}>#{text}</h#{level}>"
     end
   end

@@ -25,7 +25,9 @@
     </div>
 
     <script type="text/javascript">
-      html2canvas(document.querySelector("#capture"),{scale:1, width:600}).then(canvas => {
+      var char = Number(document.getElementById('char').value ) ;
+      
+      html2canvas(document.querySelector("#capture"),{scale:1}).then(canvas => {
         var base64 = canvas.toDataURL('image/jpeg', 1.0);
         document.getElementById('post_prtsc').setAttribute('value', base64);
         document.getElementById('preview').setAttribute('src', base64);

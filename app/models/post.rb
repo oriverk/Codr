@@ -3,8 +3,8 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :prtsc
-  validates :name, length: { maximum: 50 }
-  validates :content, presence: true, length: { maximum: 400 }
+  validates :name, length: { maximum: 100 }
+  validates :content, presence: true, length: { maximum: 800 }
 
   attr_accessor :img
 

@@ -50,9 +50,13 @@ a.float-btn{
   border:solid 0.5px grey;
   padding:10px;
   margin-bottom:5px;
-  .content{
-    margin-bottom:5px;
-    padding:10px;
+  div.image-back{
+    width:auto;
+    background-color:white;
+  }
+  div#capture.content{
+    display:inline-block;
+    padding:5px 15px 5px 15px;
     background-color:white;
     h1{font-size:20px;}
     h2{font-size:18px;}
@@ -61,13 +65,15 @@ a.float-btn{
     h5{font-size:16px;}
     h6{font-size:14px;}
     p,li{font-size:14px;}
-    pre {
+    pre.highlight.plaintext {
       width: auto;
       padding: 10px;
       white-space: pre-wrap ;
+      margin:0;
     }
   }
 }
+
 
 .post-action{
    display: flex;

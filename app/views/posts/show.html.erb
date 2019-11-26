@@ -15,9 +15,12 @@
     <p>Posted by <%= @user.name %></p>
     <p>Updated at <%= @post.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
     <p>Tags :<strong><%= @post.name %></strong></p>
+    <input type="hidden"  id="char" value=<%= @post.content.split("\n").max_by{|a| a.size}.length %> >
   </div>
+  <div class="image-back">
   <div id="capture" class="content">
-    <%= sanitize(markdown(@post.content), tags: %w(div img h1 h2 h3 h4 h5 strong em a p pre code ), attributes: %w(class href)) %>
+    <%= sanitize(markdown(@post.content), tags: %w(div img h1 h2 h3 h4 h5 ul li strong em a p pre code ), attributes: %w(class href)) %>
+  </div>
   </div>
   <div class="post-action">
     <% if user_signed_in? %>
@@ -34,6 +37,7 @@
     <% end %>
   </div>
 </div><br>
+
 
 <div class="preview-container">
   <% unless @post.prtsc.attached? %>
