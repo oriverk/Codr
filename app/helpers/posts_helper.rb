@@ -19,23 +19,22 @@ module PostsHelper
     render_options = {
       filter_html: true,
       hard_wrap: true,
-      space_after_headers: false
     }
     # renderer を変更します
     # renderer = Redcarpet::Render::HTML.new(render_options)
     renderer = HTML.new(render_options)
 
     extensions = {
-      autolink: true,
+      autolink: false,
       fenced_code_blocks: true,
       lax_spacing: true,
       no_intra_emphasis: true,
       strikethrough: true,
       superscript: true,
-      tables: true,
+      tables: false,
       highlight: true,
       disable_indented_code_blocks: true,
-      space_after_headers: true
+      space_after_headers: false
     }
     Redcarpet::Markdown.new(renderer, extensions).render(text).html_safe
   end

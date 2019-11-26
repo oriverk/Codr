@@ -63,10 +63,15 @@ class PostsController < ApplicationController
   end
 
   # PATCH/PUT /posts/1
+  
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
       if @post.update!(post_params)
+        if @post.parse_base64(params[:post][:prtsc])
+          format.html {redirect_to @post, notice: 'Image was successfully saved.'}
+          format.json {render :show, status: :ok, location: post}
+        end
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: post }
       else

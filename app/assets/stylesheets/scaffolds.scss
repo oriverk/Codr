@@ -30,6 +30,9 @@ body {
   margin: 0 auto;
   background-color:rgb(240,240,240);
   border:solid 0.5px grey;
+  @include tab{
+    width: auto;
+  }
 }
 
 
@@ -80,6 +83,9 @@ div {
   padding: 7px 7px 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
+   @include tab{
+    width: auto;
+  }
 
   h2 {
     text-align: left;
