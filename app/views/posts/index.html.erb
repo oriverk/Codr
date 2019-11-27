@@ -18,7 +18,7 @@
       </div>
       <div class="image-back">
       <div id="capture" class="content">
-        <%= sanitize(markdown(post.content), tags: %w(div img h1 h2 h3 h4 h5 ul li strong em a p pre code ), attributes: %w(class href)) %>
+        <%= sanitize(markdown(post.content), tags: %w(div img h1 h2 h3 h4 h5 ul li a p pre code ), attributes: %w(class href)) %>
       </div>
       </div>
       <div class="post-action">
@@ -49,7 +49,7 @@
       </div>
       <div class="image-back">
       <div id="capture" class="content">
-        <%= sanitize(markdown(@adminPost.content), tags: %w(div img h1 h2 h3 h4 h5 strong em a p pre code ), attributes: %w(class href)) %>
+        <%= sanitize(markdown(@adminPost.content), tags: %w(div img h1 h2 h3 h4 h5 a p pre code ), attributes: %w(class href)) %>
       </div><br>
       </div>
       <div class="post-action">

@@ -122,6 +122,31 @@ header{
 
 .form-container{
   margin: auto;
+  div.textarea.field.input-group{
+  display: block;
+  width:auto;
+    div.input-group-prepend{
+      width:auto;
+      text-align: center;
+      span.input-group-text{
+        width:100%;
+      }
+      div.input-group-text{
+        width:100%;
+      }
+      
+    }
+    #post_content{
+      overflow:hidden;
+      width:100%;
+      height: 356px;
+    }
+    #user_profile{
+      overflow:hidden;
+      width:100%;
+      height: 200px;
+    }
+  }
 }
 
 footer nav {

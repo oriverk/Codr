@@ -1,5 +1,5 @@
 <%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
+  <%- if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
       <ul>
@@ -9,7 +9,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="posting-wrapper">
     <%= form.hidden_field :user_id, value: current_user.id %>
     <%= form.hidden_field :date, value: Time.now %> 
@@ -17,16 +16,24 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Title</span>
       </div>
-      <%= form.text_field :name , placeholder:"null ok, 100 characters maximum", autofocus: true, class:"form-control"%>
+      <%= form.text_field :name , placeholder:"null ok, 100 characters max.", autofocus: true, class:"form-control"%>
     </div>
-    <div class="field input-group">
-      <%= form.text_area :content, size:"x15", class:"form-control",placeholder: "# Hello world\n## u can post code with markdown fomart!\n**not null, 500 characters maximum\n\n- you can use list style\n\n1. and you can also like this \n\n```\n<div>\n  <p>Inside code tag, u cannot use script for tag</p>\n  <p> and class href for attribute as a measure against XSS</p>\n<div>\n```" %>
+    <div class="textarea field input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Post.content, markdown format</span>
+      </div>
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <span>not null; 500 characters max.; Now&nbsp;</span><span id="counter">0</span>
+        </div>
+      </div>
+      <%= form.text_area :content, class:"form-control", onKeyUp:"countLength(value, 'counter');", placeholder: "# Hello world\n u can post code with markdown fomart!\n\n- you can use list style\n\n1. and you can also like this \n\n```\n<div>\n  <p>Script tag is inavailable</p>\n  <p>If u neet other tags or attribute, plz text me.</p>\n<div>\n```" %>
     </div><br>
     <div class="actions">
-      <%= form.submit "Post" ,class:"btn btn-outline-dark btn-block" %>
+      <%= form.submit "Post & Preview Image" ,class:"btn btn-outline-dark btn-block" %>
     </div>      
   </div><br>
 <% end %>
 <div class="actions">
   <%= button_to 'Back', posts_path, class:"btn btn-outline-dark btn-block"%>
-</div>     
+</div>

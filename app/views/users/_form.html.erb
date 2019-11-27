@@ -1,44 +1,50 @@
-﻿<%= form_with(model: @user, local: true) do |form| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+﻿<%= form_with(model: @user, local: true) do |form| -%>
+  <%- if @user.errors.any? -%>
+  <div id="error_explanation">
+    <h2><%= pluralize(user.errors.count, "error") -%> prohibited this user from being saved:</h2>
+    <ul>
+    <% user.errors.full_messages.each do |message| -%>
+      <li><%= message -%></li>
+    <%- end -%>
+    </ul>
+  </div>
+  <%- end -%>
+  <div class="setting-wrapper">
+    <h1>Account Setting</h1><br>
+    <div class="field input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Username</span>
+      </div>
+      <%= form.text_field :name, placeholder: "not null, 50 characters max." , autofocus: true, autocomplete: "name", class:"form-control" -%>
     </div>
-  <% end %>
-
-
-    <div class="setting-wrapper">
-      <h1>Account Setting</h1><br>
-      <div class="field input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">Username</span>
+    <div class="textarea field input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">User profile</span>
+      </div>
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <span>null ok, 150 characters max.; Now&nbsp;</span><span id="counter">0</span>
         </div>
-        <%= form.text_field :name, placeholder: "not null, 50 characters maximum" , autofocus: true, autocomplete: "name", class:"form-control" %>
       </div>
+        <%= form.text_area :profile, onKeyUp:"countLength(value, 'counter');" ,class:"form-controll", autofocus: true, autocomplete: "profile"-%>
+    </div>
 
-      <div class="field input-group">
-        <%= form.text_area :profile, size:"x10", placeholder: "null ok, 150 characters maximum" ,autofocus: true, autocomplete: "profile", class:"form-control"%>
-      </div>
-
-      <% if current_user.provider.blank? %>
-      <div class="field input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon3">Email: <%= current_user.email %></span>
-        </div>
-        <em><%= link_to "Access here If u wanna change Email and Password", register_path %></em>
-      </div>
-       <% end %>
-      <div class="actions">
-        <%= form.submit "Update",class:"btn btn-outline-dark btn-block"%>
+    <% if current_user.provider.blank? -%>
+    <div class="field input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Email: <%= current_user.email -%></span>
       </div>
     </div>
-<% end %>
+      <% end -%>
+    <div class="actions">
+      <%= form.submit "Update",class:"btn btn-outline-dark btn-block"-%>
+    </div>
+  </div>
+<% end -%>
 <div class="actions">
-  <%= button_to "Logout", "/logout" , data:{confirm: "Are you sure?"}, class:"btn btn-outline-dark btn-block" %>
-  <%= button_to "Delete my account" , register_path, method: :delete, data:{confirm: "Are you sure?"}, class:"btn btn-outline-danger btn-block"%>
+<%- if current_user.provider.blank? -%>
+<%= link_to "Access here If u wanna change Email and Password", register_path , class:"btn btn-outline-dark" -%>
+<% end -%>
+<%= button_to "Logout", "/logout" , data:{confirm: "Are you sure?"}, class:"btn btn-outline-dark btn-block" -%>
+<%= button_to "Delete my account" , register_path, method: :delete, data:{confirm: "Are you sure?"}, class:"btn btn-outline-danger btn-block"-%>
 </div>
