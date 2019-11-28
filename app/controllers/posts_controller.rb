@@ -14,22 +14,57 @@ class PostsController < ApplicationController
              end
   end
 
-  # for search func
   # def search
-  #   if search_params.present?
-  #     search_params.each do |i|
-  #       @posts = Post.where(id:current_user.id).where("name = ?", i)
+  #   @postsAll = Post.where(user_id:current_user.id)
+  #   words = search_params[:search]
+
+  #   @posts = Post.none
+  #   @posts = Post.where("name LIKE ?", "%#{words}%")
+
+  #   respond_to do |format|
+  #     if words.present?
+  #       format.html { redirect_to posts_path, alert: "No words input!"}
+  #       format.json { render :index, status: :not_found, location: @postsAll}
+  #     elsif @posts.blank?
+  #       format.html { redirect_to posts_path, alert: "No Posts found!"}
+  #       format.json { render :index, status: :not_found, location: @postsAll}
+  #     elsif @posts.present?
+  #       format.html { redirect_to search_posts_path, notice: "#{@posts.count} Posts found!"}
+  #       format.json { render :search, status: :ok, location: @posts}
+  #     else
+  #       format.html {redirect_to posts_path, alert: "Search Error!"}
+  #       format.json { render :index, status: :unprocessable_entity, location: @postsAll}
   #     end
-  #     if @posts.blank?
-  #       respond_to do |format|
-  #       format.html { redirect_to posts_path, notice: 'Nothing found!' }
-  #       format.json { head :no_content }
-  #       end
-  #     end
-  #   else
-  #     respond_to do |format|
-  #       format.html { redirect_to posts_path, notice: 'Search Error!' }
-  #       format.json { head :no_content }
+  #   end
+  # end
+
+  # def search
+  #   @postsAll = Post.where(user_id:current_user.id)
+  #   logger.debug "============ params[:search] is #{search_params[:search]} ============="
+  #   words = search_params[:search].split(/[[:blank:]]+/).select(&:present?)
+  # minus_words, plus_words = words.partition {|word| word.start_with?("-") }
+
+  # @posts = Post.none
+  # plus_words.each do |word|
+  #   @posts = @posts.or(Post.where("name LIKE ?", "%#{word}%"))
+  # end
+  # minus_words.each do |word|
+  #   @posts.where!("name NOT LIKE ?", "%#{word.delete_prefix('-')}%")
+  # end
+
+  #   respond_to do |format|
+  #     if words.blank?
+  #       format.html { redirect_to posts_path, alert: "No words input!"}
+  #       format.json { render :index, status: :not_found, location: @postsAll}
+  #     elsif @posts.blank?
+  #       format.html { redirect_to posts_path, alert: "No Posts found!"}
+  #       format.json { render :index, status: :not_found, location: @postsAll}
+  #     elsif @posts.present?
+  #       format.html { redirect_to search_posts_path, notice: "#{@posts.count} Posts found!"}
+  #       format.json { render :search, status: :ok, location: @posts}
+  #     else
+  #       format.html {redirect_to posts_path, alert: "Search Error!"}
+  #       format.json { render :index, status: :unprocessable_entity, location: @postsAll}
   #     end
   #   end
   # end
@@ -50,7 +85,6 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_path(@post), notice: 'Post was successfully created.' }
@@ -63,16 +97,18 @@ class PostsController < ApplicationController
   end
 
   # PATCH/PUT /posts/1
-  
+
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
-      if @post.update!(post_params)
-        if @post.parse_base64(params[:post][:prtsc])
-          format.html {redirect_to @post, notice: 'Image was successfully saved.'}
-          format.json {render :show, status: :ok, location: post}
-        end
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+      if @post.update(post_params) && @post.parse_base64(params[:post][:prtsc])
+        format.html { redirect_to @post, notice: 'Post and Image were successfully saved.' }
+        format.json { render :show, status: :ok, location: post }
+      elsif @post.update(post_params)
+        format.html { redirect_to @post, notice: 'Post was successfully saved.' }
+        format.json { render :show, status: :ok, location: post }
+      elsif @post.parse_base64(params[:post][:prtsc])
+        format.html { redirect_to @post, notice: 'Image was successfully saved.' }
         format.json { render :show, status: :ok, location: post }
       else
         format.html { render :edit }
@@ -102,6 +138,10 @@ class PostsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
     params.require(:post).permit(:user_id, :name, :content, :date)
+  end
+
+  def search_params
+    params.permit(:search)
   end
 
   def set_admin_credentials

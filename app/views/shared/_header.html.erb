@@ -21,13 +21,12 @@
         </li>
       <% end %>
       </ul>
-      
       <%# if user_signed_in? %>
-        <%#= form_tag(search_path, method:'get', class:"form-inline my-2 my-lg-0") do %>
-          <%#= text_field_tag :search ,"", class:"form-control mr-sm-2", type:"search", placeholder:"Search"%>
-          <%#= submit_tag 'Search', name: nil, class:"btn btn-outline-success my-2 my-sm-0" %>
+        <%#= form_with url: search_posts_path, method: :get, local: true, class:"form-inline my-2 my-lg-0" do |form| %>
+          <%#= form.text_field :search ,class:"form-control mr-sm-2", placeholder:"Search" %>
+          <%#= form.submit 'Search', name: nil, class:"btn btn-outline-success my-2 my-sm-0" %>
         <%# end %>
-      <%# end %>
+      <%#end %> 
     </div>
   </nav>
 </header>

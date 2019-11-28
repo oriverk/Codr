@@ -6,10 +6,10 @@ module ApplicationHelper
       title: 'Codr0',
       description: 'share code on Twitter',
       icon: [
-       { href: image_url('') },
-       { href: image_url(''), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' }
+        { href: image_url('Path.svg') },
+        { href: image_url(''), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' }
       ],
-      #noindex: !Rails.env.production?,
+      # noindex: !Rails.env.production?,
       canonical: request.original_url,
       charset: 'UTF-8',
       og: {

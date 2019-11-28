@@ -18,7 +18,7 @@ module PostsHelper
   def markdown(text)
     render_options = {
       filter_html: true,
-      hard_wrap: true,
+      hard_wrap: true
     }
     # renderer を変更します
     # renderer = Redcarpet::Render::HTML.new(render_options)

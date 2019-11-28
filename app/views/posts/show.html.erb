@@ -14,7 +14,6 @@
     <p>Posted by <%= @user.name %></p>
     <p>Updated at <%= @post.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
     <p>Tags :<strong><%= @post.name %></strong></p>
-    <input type="hidden"  id="char" value=<%= @post.content.split("\n").max_by{|a| a.size}.length %> >
   </div>
   <div class="image-back">
   <div id="capture" class="content">

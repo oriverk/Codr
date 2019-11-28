@@ -6,7 +6,7 @@
   <% end %>
 </div>
 
-<% if user_signed_in? && @posts.present? %>
+<% if user_signed_in? %>
 <div class="posts-container">
   <% @posts.each do |post| %>
     <div class="post-container">
@@ -30,34 +30,5 @@
       </div>
     </div>
   <% end%>
-</div>
-<% end %>
-
-<hr>
-<% if !user_signed_in? || !@posts.present? || current_user.admin = true %>
-<div class="explanation-container">
-  <h2>Welcome to Codr0!</h2>
-  <div class="posts-container">
-    <div class="post-container">
-      <div class="user-info">
-        <div class="user-name"><p>only for explanation</p></div>
-      </div>
-      <div class="post-info">
-        <p class="date"></p>
-      </div>
-      <div class="image-back">
-      <div id="capture" class="content">
-        <%= sanitize(markdown(@adminPost.content), tags: %w(div img h1 h2 h3 h4 h5 a p pre code ), attributes: %w(class href)) %>
-      </div><br>
-      </div>
-      <div class="post-action">
-        <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{@adminPost.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet",class:"btn btn-primary-dark", target:"_blank" %>
-        <%= link_to 'Show', "", class:"btn btn-outline-dark"%>
-        <%= link_to 'Edit', "", class:"btn btn-outline-dark" %>
-        <%= link_to 'Destroy', "", data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger"%>
-      </div><br>
-      <p>Only tweet button is able to push.</p>
-    </div>
-  </div>
 </div>
 <% end %>

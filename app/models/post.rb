@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { maximum: 500 }
 
   attr_accessor :img
+  attr_accessor :text
 
   def parse_base64(img)
     if img.present?

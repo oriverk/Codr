@@ -3,9 +3,12 @@
 Rails.application.routes.draw do
   root 'posts#index'
   get 'privacy' => 'static_pages#privacy'
-  resources :posts
-  # get 'search' => 'posts#search', as: :search
 
+  resources :posts do
+    # collection do
+    #   get 'search'
+    # end
+  end
 
   get 'user' => 'users#edit', as: :edit_user
   patch 'user' => 'users#update'
@@ -15,12 +18,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
 
   devise_scope :user do
-    get 'signup' =>  'devise/registrations#new'
-    post 'signup' =>  'devise/registrations#create'
+    get 'signup' => 'devise/registrations#new'
+    post 'signup' => 'devise/registrations#create'
 
     get 'login' => 'devise/sessions#new'
     post 'login' => 'devise/sessions#create'
-    get 'logout' =>  'devise/sessions#destroy'
+    get 'logout' => 'devise/sessions#destroy'
 
     get 'register' => 'devise/registrations#edit'
     patch 'register' => 'devise/registrations#update'

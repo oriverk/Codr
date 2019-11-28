@@ -27,13 +27,14 @@
           <span>not null; 500 characters max.; Now&nbsp;</span><span id="counter">0</span>
         </div>
       </div>
-      <%= form.text_area :content, class:"form-control", onKeyUp:"countLength(value, 'counter');", placeholder: "# Hello world\n u can post code with markdown fomart!\n\n- you can use list style\n\n1. and you can also like this \n\n```\n<div>\n  <p>Script tag is inavailable</p>\n  <p>If u neet other tags or attribute, plz text me.</p>\n<div>\n```" %>
+      <% if post.content.blank? %>
+      <%= form.text_area :content,value:"\n```\n\n```\n", class:"form-control", onKeyUp:"countLength(value, 'counter');" %>
+      <% else%>
+      <%= form.text_area :content, class:"form-control", onKeyUp:"countLength(value, 'counter');" %>
+      <% end %>
     </div><br>
     <div class="actions">
       <%= form.submit "Post & Preview Image" ,class:"btn btn-outline-dark btn-block" %>
     </div>      
   </div><br>
 <% end %>
-<div class="actions">
-  <%= button_to 'Back', posts_path, class:"btn btn-outline-dark btn-block"%>
-</div>
