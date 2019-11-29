@@ -107,6 +107,9 @@ label {
 header{
   nav.container.navbar.navbar-dark.bg-dark{
     width:auto;
+    a.nav-link{
+      padding-left:20px;
+    }
     a.navbar-brand:hover, a.nav-link:hover{
       background-color:grey;
     }
