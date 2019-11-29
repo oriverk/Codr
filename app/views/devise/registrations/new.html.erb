@@ -3,7 +3,7 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= button_to "Signup / Login with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider),method: :post, class:"btn btn-outline-primary btn-block"%><br />
+    <%= button_to "Signup / Login with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider),method: :post, id:"tweet", class:"btn btn-outline-dark btn-block"%><br />
   <% end %>
 <% end %>
 <%= form_for(resource, as: resource_name, url: signup_path) do |f| %>

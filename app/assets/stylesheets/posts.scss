@@ -99,33 +99,6 @@ a.float-btn{
   }
 }
 
-.post-action{
-   display: flex;
-    form{
-      display:inline-block;
-      width:25%;
-    }
-    #tweet{
-    margin-left:0;
-    display:inline-block;
-    width:100%;
-    background-color:#00acee;
-    color:white;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    &:hover{
-      color:black;
-    }
-    }
-    .btn{
-      flex:auto;
-      width:25%;
-      margin-left:4px;
-      border:solid 1px #fff;
-    }
-  }
-  
-
 .preview-container{
   border:solid 0.5px grey;
   padding:10px;

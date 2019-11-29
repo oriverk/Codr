@@ -24,12 +24,12 @@
 
   </div>
   </div>
-  <div class="post-action">
+  <div class="post actions">
     <% if user_signed_in? %>
       <%= form_with(model: @post, local: true) do |form| %>
         <%= form.hidden_field :id, value: @post.id %>
         <%= form.hidden_field :prtsc, value: "" %>
-        <%= form.submit "Post", class:"btn btn-outline-dark", id:"tweet", value:"tweet" %>
+        <%= form.submit "Post", class:"btn btn-outline-dark", id:"tweet", value:"Tweet" %>
       <% end %>
     <% end %>
     <%= link_to 'Back', posts_path , class:"btn btn-outline-dark" %>

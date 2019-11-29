@@ -22,9 +22,9 @@
         <%= sanitize(markdown(post.content), tags: %w(div img h1 h2 h3 h4 h5 ul li a p pre code ), attributes: %w(class href)) %>
       </div>
       </div>
-      <div class="post-action">
+      <div class="post actions">
         <% if post.prtsc.attached? %>
-          <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{post.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet", class:"btn-outline-primary", target:"_blank" %>
+          <%= link_to 'Tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{post.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet", class:"btn btn-outline-dark", target:"_blank" %>
         <% end %>
         <%= link_to 'Show', post, class:"btn btn-outline-dark" %>
         <%= link_to 'Edit', edit_post_path(post), class:"btn btn-outline-dark"%>
@@ -51,8 +51,8 @@
         <%= sanitize(markdown(@adminPost.content), tags: %w(div img h1 h2 h3 h4 h5 a p pre code ), attributes: %w(class href)) %>
       </div><br>
       </div>
-      <div class="post-action">
-        <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{@adminPost.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet",class:"btn btn-outline-primary", target:"_blank" %>
+      <div class="post actions">
+        <%= link_to 'Tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{@adminPost.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet",class:"btn btn-outline-dark", target:"_blank" %>
         <%= link_to 'Show', "", class:"btn btn-outline-dark"%>
         <%= link_to 'Edit', "", class:"btn btn-outline-dark" %>
         <%= link_to 'Destroy', "", data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger"%>

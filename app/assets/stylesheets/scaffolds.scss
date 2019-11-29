@@ -131,15 +131,47 @@ footer nav {
       }
     }
 }
+
+#tweet{
+  color:#00acee;
+  margin-left: 0;
+  border:solid 1px #00acee;
+  &:hover{
+    color:#fff;
+    background-color: #00acee;
+  }
+}
+
+.actions{
+  a.btn.btn-outline-dark.btn-block, input.btn.btn-outline-dark.btn-block{
+    color:#fff;
+    border:solid 1px #fff;
+  }
+  input.btn-outline-danger.btn-block{
+    color:#fff;
+    border:solid 1px red;
+  }
+}
+.post.actions{
+  display:flex;
+  a.btn.btn-outline-dark, a.btn.btn-outline-danger, input.btn.btn-outline-dark{
+    flex:auto;
+    width:25%;
+    margin-left:5px;
+    color:#fff;
+    border:solid 1px #fff;
+  }
   
-.btn.btn-outline-dark{
-  color:#fff;
-  border:solid 1px #fff;
+  form{
+    width:25%;
+    #tweet{
+      width:100%;
+    }
+  }
 }
-.btn.btn-outline-danger{
-  color:#fff;
-  border:solid 1px red;
-}
+
+
+    
 
 .yield-container{
   margin-bottom: 2px;
