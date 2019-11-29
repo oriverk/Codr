@@ -11,13 +11,16 @@
 </div>
 <div class="post-container">
   <div class="post-info">
-    <p>Posted by <%= @user.name %></p>
-    <p>Updated at <%= @post.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
-    <p>Tags :<strong><%= @post.name %></strong></p>
+    <div class="post-info span">
+      <span class="username"><%= @user.name %></span>
+      <span class="updated_at">Updated at <%= @post.updated_at.strftime("%Y.%m.%d %H:%M") %></span>
+    </div>
+    <p class="tags"><% if @post.name.present? %>Tags :<strong><%= @post.name %></strong><% end %></p>
   </div>
   <div class="image-back">
   <div id="capture" class="content">
     <%= sanitize(markdown(@post.content), tags: %w(div img h1 h2 h3 h4 h5 ul li a p pre code ), attributes: %w(class href)) %>
+
   </div>
   </div>
   <div class="post-action">
@@ -31,7 +34,7 @@
     <%= link_to 'Back', posts_path , class:"btn btn-outline-dark" %>
     <% if user_signed_in? %>
       <%= link_to 'Edit', edit_post_path(@post) , class:"btn btn-outline-dark" %>
-      <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-dark" %>
+      <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger" %>
     <% end %>
   </div>
 </div><br>

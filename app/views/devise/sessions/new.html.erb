@@ -1,3 +1,4 @@
+<div class="devise">
 <h2>Login</h2><br>
 
 <%- if devise_mapping.omniauthable? %>
@@ -24,7 +25,7 @@
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <label>remember me?</label>
+      <span>remember me?</span>
     </div>
   <% end %>
 
@@ -34,3 +35,4 @@
 <% end %>
 
 <em><%= link_to "If you don't  have Codr account, please Signup from here", signup_path %></em>
+</div>

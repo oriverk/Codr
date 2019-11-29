@@ -82,6 +82,8 @@ gem 'redcarpet'
 # syntax hightlight
 gem 'rouge'
 
+gem 'coderay'
+
 # meta-tag
 gem 'meta-tags'
 

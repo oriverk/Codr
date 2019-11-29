@@ -28,13 +28,14 @@ body {
 .body-container{
   width:680px;
   margin: 0 auto;
-  background-color:rgb(240,240,240);
-  border:solid 0.5px grey;
+  // background-color:rgb(240,240,240);
+  background-color: #16202a;
+  border:solid 1px grey;
+  border-top:none;
   @include tab{
     width: auto;
   }
 }
-
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -43,13 +44,13 @@ p, ol, ul, td {
 }
 
 a {
-  color: #000;
+  color: #fff;
   &:visited {
     color: #666;
   }
   &:hover {
     color: #fff;
-    background-color: #000;
+    background-color: #fff;
   }
 }
 
@@ -81,12 +82,12 @@ div {
     width: auto;
   }
   h2 {
+    color:#000;
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
     font-size: 12px;
     margin: -7px -7px 0;
-    color: #000;
   }
 
   ul li {
@@ -95,6 +96,7 @@ div {
     color: #000;
   }
 }
+
 
 label {
   display: block;
@@ -105,7 +107,38 @@ label {
 header{
   nav.container.navbar.navbar-dark.bg-dark{
     width:auto;
+    a.navbar-brand:hover, a.nav-link:hover{
+      background-color:grey;
+    }
+    span.subtitle{
+      font-size:16px;
+    }
   }
+}
+
+footer nav {
+    background-color:#353a40;
+    display:flex;
+      a.nav-link{
+      flex:auto;
+      color:white;
+      font-weight: bold;
+      text-align: center;
+      border-left:solid 1px grey;
+      border-right:solid 1px grey;
+      &:hover{
+        background-color:grey;
+      }
+    }
+}
+  
+.btn.btn-outline-dark{
+  color:#fff;
+  border:solid 1px #fff;
+}
+.btn.btn-outline-danger{
+  color:#fff;
+  border:solid 1px red;
 }
 
 .yield-container{
@@ -151,15 +184,6 @@ header{
   }
 }
 
-footer nav {
-    background-color:#353a40;
-    display:flex;
-      a.nav-link{
-      flex:auto;
-      color:white;
-      font-weight: bold;
-      text-align: center;
-      border-left:solid 1px white;
-      border-right:solid 1px white;
-    }
-  }
+#privacy{
+  color:white;
+}

@@ -11,7 +11,7 @@ $tab: 680px;
 }
 
 a.float-btn{
-  color:white;
+  color:#fff;
   font-weight: 700;
   display:inline-block;
   position:fixed;
@@ -39,21 +39,41 @@ a.float-btn{
     color:black;
   }
   &:hover{
-    color:white;
+    color:#fff;
+    background-color:black;
   }
 }
 .posts-container{
   padding: 5px;
+  color:#fff;
 }
 .post-container{
+  color:#fff;
   border:solid 0.5px grey;
   padding:10px;
   margin-bottom:5px;
+  div.post-info{
+    div.post-info.span{
+      margin-bottom:10px;
+      .username{
+      font-weight:bold;
+      font-size:15px;
+      }
+      .updated_at{
+      margin-left:10px;
+      }
+    }
+    p{
+      font-size:14px;
+    }
+  }
   div.image-back{
     width:auto;
-    background-color:white;
+    background-color:#fff;
+    margin-bottom:5px;
   }
-  div#capture.content{
+  #capture{
+    color:#000;
     display:inline-block;
     padding:5px 15px 5px 15px;
     background-color:white;
@@ -64,32 +84,47 @@ a.float-btn{
     h5{font-size:16px;}
     h6{font-size:14px;}
     p,li{font-size:14px;}
-    pre.highlight.plaintext {
+    a{
+      display:block;
+    }
+    pre.highlight {
       width: auto;
       padding: 10px;
-      white-space: pre-wrap ;
       margin:0;
+      margin-top:5px;
+    }
+    a{
+      display:block;
     }
   }
 }
 
 .post-action{
    display: flex;
-    .btn{
-      flex:auto;
-      margin-left:4px;
+    form{
+      display:inline-block;
+      width:25%;
     }
     #tweet{
-      margin-left:0;
-      background-color:#00acee;
-      color:white;
-      font-weight: bold;
-      letter-spacing: 0.1em;
-      &:hover{
-        color:black;
-      }
+    margin-left:0;
+    display:inline-block;
+    width:100%;
+    background-color:#00acee;
+    color:white;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    &:hover{
+      color:black;
+    }
+    }
+    .btn{
+      flex:auto;
+      width:25%;
+      margin-left:4px;
+      border:solid 1px #fff;
     }
   }
+  
 
 .preview-container{
   border:solid 0.5px grey;
@@ -98,6 +133,9 @@ a.float-btn{
   strong{
     color:red;
     font-weight: bold;
+  }
+  p{
+    color:white;
   }
   img{
     max-width:100%;
@@ -108,6 +146,7 @@ a.float-btn{
 .explanation-container{
   h2{
     text-align: center;
+    color:#fff;
   }
 }
 

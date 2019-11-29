@@ -16,30 +16,6 @@ class PostsController < ApplicationController
 
   # def search
   #   @postsAll = Post.where(user_id:current_user.id)
-  #   words = search_params[:search]
-
-  #   @posts = Post.none
-  #   @posts = Post.where("name LIKE ?", "%#{words}%")
-
-  #   respond_to do |format|
-  #     if words.present?
-  #       format.html { redirect_to posts_path, alert: "No words input!"}
-  #       format.json { render :index, status: :not_found, location: @postsAll}
-  #     elsif @posts.blank?
-  #       format.html { redirect_to posts_path, alert: "No Posts found!"}
-  #       format.json { render :index, status: :not_found, location: @postsAll}
-  #     elsif @posts.present?
-  #       format.html { redirect_to search_posts_path, notice: "#{@posts.count} Posts found!"}
-  #       format.json { render :search, status: :ok, location: @posts}
-  #     else
-  #       format.html {redirect_to posts_path, alert: "Search Error!"}
-  #       format.json { render :index, status: :unprocessable_entity, location: @postsAll}
-  #     end
-  #   end
-  # end
-
-  # def search
-  #   @postsAll = Post.where(user_id:current_user.id)
   #   logger.debug "============ params[:search] is #{search_params[:search]} ============="
   #   words = search_params[:search].split(/[[:blank:]]+/).select(&:present?)
   # minus_words, plus_words = words.partition {|word| word.start_with?("-") }

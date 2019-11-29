@@ -11,9 +11,11 @@
   <% @posts.each do |post| %>
     <div class="post-container">
       <div class="post-info">
-        <p>Posted by <%= User.find(post.user_id).name %></p>
-        <p>Updated at <%= post.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
-        <p>Tags :<strong><%= post.name %></strong></p>
+        <div class="post-info span">
+          <span class="username"><%= User.find(post.user_id).name %></span>
+          <span class="updated_at">Updated at <%= post.updated_at.strftime("%Y.%m.%d %H:%M") %></span>
+        </div>
+        <p class="tags"><% if post.name.present? %>Tags :<strong><%= post.name %></strong><% end %></p>
       </div>
       <div class="image-back">
       <div id="capture" class="content">
@@ -22,7 +24,7 @@
       </div>
       <div class="post-action">
         <% if post.prtsc.attached? %>
-          <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{post.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet", class:"btn btn-primary-dark", target:"_blank" %>
+          <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{post.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet", class:"btn-outline-primary", target:"_blank" %>
         <% end %>
         <%= link_to 'Show', post, class:"btn btn-outline-dark" %>
         <%= link_to 'Edit', edit_post_path(post), class:"btn btn-outline-dark"%>
@@ -33,10 +35,9 @@
 </div>
 <% end %>
 
-<hr>
 <% if !user_signed_in? || !@posts.present? || current_user.admin = true %>
 <div class="explanation-container">
-  <h2>Welcome to Codr0!</h2>
+  <h2 id="explanation-h2">Welcome to Codr0!</h2>
   <div class="posts-container">
     <div class="post-container">
       <div class="user-info">
@@ -51,7 +52,7 @@
       </div><br>
       </div>
       <div class="post-action">
-        <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{@adminPost.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet",class:"btn btn-primary-dark", target:"_blank" %>
+        <%= link_to 'tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{@adminPost.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet",class:"btn btn-outline-primary", target:"_blank" %>
         <%= link_to 'Show', "", class:"btn btn-outline-dark"%>
         <%= link_to 'Edit', "", class:"btn btn-outline-dark" %>
         <%= link_to 'Destroy', "", data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger"%>

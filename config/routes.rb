@@ -4,11 +4,8 @@ Rails.application.routes.draw do
   root 'posts#index'
   get 'privacy' => 'static_pages#privacy'
 
-  resources :posts do
-    # collection do
-    #   get 'search'
-    # end
-  end
+  resources :posts
+  # get 'search' => 'posts#search'
 
   get 'user' => 'users#edit', as: :edit_user
   patch 'user' => 'users#update'
