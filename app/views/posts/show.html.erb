@@ -1,6 +1,7 @@
 ﻿<% if @post.prtsc.attached? %>
   <% set_meta_tags og:{image: @post.prtsc.service_url} %>
 <% end %>
+<% set_meta_tags og:{description: @post.name} %>
 
 <div class="posting-container">
   <% if user_signed_in? %>
