@@ -36,11 +36,11 @@ a.float-btn{
     bottom:10%;
   }
   &:visited{
-    color:black;
+    color:#000;
   }
   &:hover{
     color:#fff;
-    background-color:black;
+    background-color:#000;
   }
 }
 
@@ -82,7 +82,7 @@ a.float-btn{
     color:#000;
     display:inline-block;
     padding:5px 15px 5px 15px;
-    background-color:white;
+    background-color:#fff;
     h1{font-size:20px;}
     h2{font-size:18px;}
     h3{font-size:17px;}
@@ -114,7 +114,7 @@ a.float-btn{
     font-weight: bold;
   }
   p{
-    color:white;
+    color:#fff;
   }
   img{
     max-width:100%;

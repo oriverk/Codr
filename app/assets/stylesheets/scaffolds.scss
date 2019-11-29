@@ -24,7 +24,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
 .body-container{
   width:680px;
   margin: 0 auto;
@@ -36,13 +35,11 @@ body {
     width: auto;
   }
 }
-
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
-
 a {
   color: #fff;
   &:visited {
@@ -53,25 +50,20 @@ a {
     background-color: #fff;
   }
 }
-
 th {
   padding-bottom: 5px;
 }
-
 td {
   padding: 0 5px 7px;
 }
-
 div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
 }
-
 #notice {
   color: green;
 }
-
 #error_explanation {
   width: auto;
   border: 2px solid rgb(255, 53, 53);
@@ -89,21 +81,17 @@ div {
     font-size: 12px;
     margin: -7px -7px 0;
   }
-
   ul li {
     font-size: 12px;
     list-style: square;
     color: #000;
   }
 }
-
-
 label {
   display: block;
 }
 
 /* custom from here */
-
 header{
   nav.container.navbar.navbar-dark.bg-dark{
     width:auto;
@@ -124,7 +112,7 @@ footer nav {
     display:flex;
       a.nav-link{
       flex:auto;
-      color:white;
+      color:#fff;
       font-weight: bold;
       text-align: center;
       border-left:solid 1px grey;
@@ -173,9 +161,6 @@ footer nav {
   }
 }
 
-
-    
-
 .yield-container{
   margin-bottom: 2px;
   margin:20px;
@@ -220,5 +205,5 @@ footer nav {
 }
 
 #privacy{
-  color:white;
+  color:#fff;
 }
