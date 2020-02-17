@@ -3,15 +3,11 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new edit update destroy]
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :set_admin_credentials, only: %i[index]
-  before_action :set_admin, only: %i[index]
 
-  # GET /posts
-  # GET /posts.json
   def index
     @posts = if user_signed_in?
                Post.where(user_id: current_user.id).order(updated_at: :desc)
-             end
+             end            
   end
 
   # def search
@@ -45,20 +41,14 @@ class PostsController < ApplicationController
   #   end
   # end
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show; end
 
-  # GET /posts/new
   def new
     @post = Post.new(user_id: current_user.id, date: Time.now)
   end
 
-  # GET /posts/1/edit
   def edit; end
 
-  # POST /posts
-  # POST /posts.json
   def create
     @post = Post.new(post_params)
     respond_to do |format|
@@ -72,9 +62,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
-
-  # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params) && @post.parse_base64(params[:post][:prtsc])
@@ -93,8 +80,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|
@@ -118,23 +103,5 @@ class PostsController < ApplicationController
 
   def search_params
     params.permit(:search)
-  end
-
-  def set_admin_credentials
-    @nm = Rails.application.credentials.dig(:admin, :uid).to_s
-    @pr = Rails.application.credentials.dig(:admin, :provider).to_s
-  end
-
-  def set_admin
-    @admin = User.find_or_initialize_by(admin: true)
-    if @admin.new_record?
-      @admin.update_attributes!(provider: @pr, uid: @nm, email: "#{@nm}-#{@pr}@example.com", name: 'OriverK')
-    end
-    post = Post.find_or_initialize_by(user_id: @admin.id)
-    if post.new_record?
-      post.update_attributes!(name: 'ruby rails omniauth twitter redcarpet rouge js awss3', date: Time.now,
-                              content: "# Let's Write and Share your Code on Twitter!\nI made this as my portforlio. Plz access footer links.\n## What for\nCode shared on twitter looks not good.(e.g. Some codes turn to link)\n## How\n1. U can Post with markdown format\n2. Push tweet, then the post will be saved onto AWS S3 as image\n\nImage is used only as og:image for twitter card.\n\n```\n<h1>From Now<h2>\n<div>\n  <p>Need to implement syntax-highlight function<p>\n  <p>And to implement more functions</p>\n</div>\n```")
-    end
-    @adminPost = Post.where(user_id: @admin.id).order(created_at: :asc).take
   end
 end

@@ -1,62 +1,84 @@
 <div class="posting-container">
   <% if user_signed_in? %>
-    <%=link_to "New Post", new_post_path(user_id: current_user.id) , class:"float-btn"%>
+  <%=link_to "New Post", new_post_path(user_id: current_user.id) , class:"float-btn"%>
   <% else %>
-    <%=link_to "New Post", 'login' , class:"float-btn"%>
+  <%=link_to "New Post", 'login' , class:"float-btn"%>
   <% end %>
 </div>
 
 <% if user_signed_in? && @posts.present? %>
 <div class="posts-container">
   <% @posts.each do |post| %>
-    <div class="post-container">
-      <div class="post-info">
-        <div class="post-info span">
-          <span class="username"><%= User.find(post.user_id).name %></span>
-          <span class="updated_at">Updated at <%= post.updated_at.strftime("%Y.%m.%d %H:%M") %></span>
-        </div>
-        <p class="tags"><% if post.name.present? %>Tags :<strong><%= post.name %></strong><% end %></p>
+  <div class="post-container">
+    <div class="post-info">
+      <div class="post-info span">
+        <span class="username"><%= User.find(post.user_id).name %></span>
+        <span class="updated_at">Updated at <%= post.updated_at.strftime("%Y.%m.%d %H:%M") %></span>
       </div>
-      <div class="image-back">
+      <p class="tags"><% if post.name.present? %>Tags :<strong><%= post.name %></strong><% end %></p>
+    </div>
+    <div class="image-back">
       <div id="capture" class="content">
         <%= sanitize(markdown(post.content), tags: %w(div img h1 h2 h3 h4 h5 ul li a p pre code ), attributes: %w(class href)) %>
       </div>
-      </div>
-      <div class="post actions">
-        <% if post.prtsc.attached? %>
-          <%= link_to 'Tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{post.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet", class:"btn btn-outline-dark", target:"_blank" %>
-        <% end %>
-        <%= link_to 'Show', post, class:"btn btn-outline-dark" %>
-        <%= link_to 'Edit', edit_post_path(post), class:"btn btn-outline-dark"%>
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger"%>
-      </div>
     </div>
+    <div class="post actions">
+      <% if post.prtsc.attached? %>
+      <%= link_to 'Tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{post.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet", class:"btn btn-outline-dark", target:"_blank" %>
+      <% end %>
+      <%= link_to 'Show', post, class:"btn btn-outline-dark" %>
+      <%= link_to 'Edit', edit_post_path(post), class:"btn btn-outline-dark"%>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger"%>
+    </div>
+  </div>
   <% end%>
 </div>
 <% end %>
 
-<% if !user_signed_in? || !@posts.present? || current_user.admin = true %>
-  <h2 id="explanation">Welcome to Codr0!</h2>
-  <div class="posts-container">
-    <div class="post-container">
-      <div class="user-info">
-        <div class="user-name"><span>only for explanation</span></div>
-      </div>
-      <div class="post-info">
-        <p class="date"></p>
-      </div>
-      <div class="image-back">
-      <div id="capture" class="content">
-        <%= sanitize(markdown(@adminPost.content), tags: %w(div img h1 h2 h3 h4 h5 a p pre code ), attributes: %w(class href)) %>
-      </div><br>
-      </div>
-      <div class="post actions">
-        <%= link_to 'Tweet', "https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/#{@adminPost.id}&button_hashtag=Codr0&ref_src=twsrc%5Etfw", id:"tweet",class:"btn btn-outline-dark", target:"_blank" %>
-        <%= link_to 'Show', "", class:"btn btn-outline-dark"%>
-        <%= link_to 'Edit', "", class:"btn btn-outline-dark" %>
-        <%= link_to 'Destroy', "", data: { confirm: 'Are you sure?' } , class:"btn btn-outline-danger"%>
-      </div>
-      <span>Only tweet button is available.</span>
+<% if !user_signed_in? || !@posts.present? || current_user.admin %>
+<h2 id="explanation">Welcome to Codr0!</h2>
+<div class="posts-container">
+  <div class="post-container">
+    <div class="user-info">
+      <div class="user-name"><span>only for explanation</span></div>
     </div>
+    
+    <div class="post-info">
+      <p class="date"></p>
+    </div>
+
+    <div>
+      <div id="capture" class="content">
+        <h2>Let's Write and Share your Code on Twitter!</h2>
+        <p>I made this as my portforlio. Plz access footer links.</p>
+        <h3>What for</h3>
+        <p>Code shared on twitter looks not good.(e.g. Some codes turn to link)</p>
+        <h3>How</h3>
+
+        U can Post with markdown format
+        Push tweet, then the post will be saved onto AWS S3 as image
+
+
+        <p>Image is used only as og:image for twitter card.</p>
+        <div class="highlight">
+          <pre class="highlight plaintext"><code>&lt;h1&gt;From Now&lt;h2&gt;
+&lt;div&gt;
+  &lt;p&gt;Need to implement syntax-highlight function&lt;/p&gt;
+  &lt;p&gt;And to implement more functions&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+        </div>
+      </div><br>
+    </div>
+    
+    <div class="post actions">
+      <a id="tweet" class="btn btn-outline-dark" target="_blank"
+        href="https://twitter.com/intent/tweet?url=https://codr0.herokuapp.com/posts/4&amp;button_hashtag=Codr0&amp;ref_src=twsrc%5Etfw">Tweet</a>
+      <a class="btn btn-outline-dark" href="">Show</a>
+      <a class="btn btn-outline-dark" href="">Edit</a>
+      <a data-confirm="Are you sure?" class="btn btn-outline-danger" href="">Destroy</a>
+    </div>
+    <span>This post is sample. Only tweet button is available.</span>
   </div>
+</div>
 <% end %>

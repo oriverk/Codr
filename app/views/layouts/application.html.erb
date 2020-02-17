@@ -12,17 +12,21 @@
   <body>
     <div class="body-container">
       <%= render :partial => 'shared/header' %>
+
       <%- if notice.present? %>
         <p id="notice" class="alert alert-info" role="alert"><%= notice %></p>
       <% end %>
       <%- if alert.present? %>
         <p id="alert" class="alert alert-danger" role="alert"><%= alert %></p>
       <% end %>
+
       <div class="yield-container">
         <%= yield %>
       </div>
+
       <%= render :partial => 'shared/footer' %>
     </div>
+    
     <script type="text/javascript">
       html2canvas(document.querySelector("#capture"),{scale:1}).then(canvas => {
         var base64 = canvas.toDataURL('image/jpeg', 1.0);

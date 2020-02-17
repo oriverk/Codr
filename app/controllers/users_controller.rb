@@ -4,22 +4,17 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: %i[edit update destroy]
 
-  # GET /users
-  # GET /users.json
   # def index
 
   #   @userPosts = Post.where(user: current_user.id)
   #   @userPostsCount = @userPosts.to_a.size
   # end
 
-  # GET /users/1
-  # GET /users/1.json
   # def show
   #   @user = current_user
   #   @posts = Post.where(user: current_user.id)
   # end
 
-  # GET /users/new
   def new
     @user = User.new
   end
@@ -27,8 +22,6 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit; end
 
-  # user /users
-  # user /users.json
   def create
     @user = User.new(user_params)
 
@@ -43,8 +36,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
@@ -57,8 +48,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   # def destroy
   #   @user.destroy
   #   respond_to do |format|
