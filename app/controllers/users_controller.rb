@@ -4,23 +4,13 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: %i[edit update destroy]
 
-  # def index
-
-  #   @userPosts = Post.where(user: current_user.id)
-  #   @userPostsCount = @userPosts.to_a.size
-  # end
-
-  # def show
-  #   @user = current_user
-  #   @posts = Post.where(user: current_user.id)
-  # end
-
   def new
     @user = User.new
   end
 
   # GET /users/1/edit
-  def edit; end
+  def edit
+  end
 
   def create
     @user = User.new(user_params)
@@ -47,14 +37,6 @@ class UsersController < ApplicationController
       end
     end
   end
-
-  # def destroy
-  #   @user.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to users_url, notice: 'user was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
 
   private
 
