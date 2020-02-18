@@ -6,13 +6,13 @@ module PostsHelper
   # https://github.com/vmg/redcarpet#and-its-like-really-simple-to-use
 
   class HTML < Redcarpet::Render::HTML
-    include Rouge::Plugins::Redcarpet
+    # include Rouge::Plugins::Redcarpet
 
     # change # header to h2
-    def header(text, level)
-      level += 1
-      "<h#{level}>#{text}</h#{level}>"
-    end
+    # def header(text, level)
+    #   level += 1
+    #   "<h#{level}>#{text}</h#{level}>"
+    # end
   end
 
   def markdown(text)

@@ -22,7 +22,7 @@ module ApplicationHelper
         locale: 'ja_JP'
       },
       twitter: {
-        site: '@gdCodr',
+        site: '@not_you_die',
         card: 'summary_large_image'
       }
     }

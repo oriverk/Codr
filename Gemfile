@@ -44,6 +44,9 @@ group :development do
   gem 'web-console'
   gem 'spring'
   gem 'spring-watcher-listen'
+
+  gem 'solargraph'
+  gem 'rubocop', require: false
 end
 
 group :test do

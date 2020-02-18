@@ -38,6 +38,6 @@ class User < ApplicationRecord
   private
 
   def self.dummy_email(auth)
-    "#{auth.uid}-#{auth.provider}@example.com"
+    "#{auth['uid']}-#{auth['provider']}@example.com"
   end
 end
