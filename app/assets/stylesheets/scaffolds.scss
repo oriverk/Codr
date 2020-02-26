@@ -1,6 +1,6 @@
 @import "./users";
 @import "./posts";
-@import "./rouge";
+
 
 $tab: 680px; 
 @mixin tab {
@@ -9,11 +9,6 @@ $tab: 680px;
   }
 }
 
-// .box {
-//   @include tab {
-//     background-color: blue;
-//   };
-// }
   
 body {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -207,3 +202,5 @@ footer nav {
 #privacy{
   color:#fff;
 }
+
+@import "./rouge";

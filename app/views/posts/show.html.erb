@@ -20,8 +20,7 @@
   </div>
   <div class="image-back">
   <div id="capture" class="content">
-    <%= sanitize(markdown(@post.content), tags: %w(div img h1 h2 h3 h4 h5 ul li a p pre code ), attributes: %w(class href)) %>
-
+    <%== markdown(@post.content.force_encoding("UTF-8")) %>
   </div>
   </div>
   <div class="post actions">
